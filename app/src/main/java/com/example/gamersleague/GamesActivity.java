@@ -54,6 +54,9 @@ public class GamesActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        Intent intent = getIntent();
+        String username = intent.getStringExtra("username");
+        mUsernameTextView.setText("Hello "+username+" .Welcome to Gamers League");
 
     }
 }
