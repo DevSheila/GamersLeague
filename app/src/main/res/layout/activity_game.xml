@@ -17,6 +17,16 @@
         android:textSize="14sp"
         android:textColor="@color/black"/>
 
+
+    <Button
+        android:id="@+id/addCommentButton"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_margin="10dp"
+        android:text=" + Add Comment"
+        android:layout_below="@+id/reviewslistView"
+        android:background="@color/colorPrimaryText"
+        android:textColor="@android:color/white"/>
     <ListView
         android:id="@+id/reviewslistView"
         android:layout_width="match_parent"
@@ -27,5 +37,11 @@
         android:layout_marginTop="11dp"
         android:layout_marginEnd="1dp"
         android:layout_marginRight="1dp" />
+
+
+
+
+
+
 
 </RelativeLayout>
