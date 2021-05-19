@@ -63,6 +63,7 @@ public class ReviewsActivity extends DialogFragment{
                     String rating = radioButton.getText().toString();
 
                     surveyRadioGroup.clearCheck();
+                    editTextComment.getText().clear();
                     listener.applyText(comment, rating);
 
                 }

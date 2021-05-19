@@ -43,6 +43,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Log.i("username",username);
                 Intent intent = new Intent(MainActivity.this, GamesActivity.class);
                 intent.putExtra("username", username);
+                mUsernameEditText.setText(" ");
+
                 startActivity(intent);
 
 
