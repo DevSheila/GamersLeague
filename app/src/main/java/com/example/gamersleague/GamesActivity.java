@@ -35,5 +35,25 @@ public class GamesActivity extends AppCompatActivity {
 
         ArrayList<String> allGames = new ArrayList<>();
         allGames.addAll(Arrays.asList(games));
+
+        GamesArrayAdapter listAdapter = new GamesArrayAdapter(GamesActivity.this, android.R.layout.simple_list_item_1,games);
+        mListView.setAdapter(listAdapter);
+
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.i("game",games[position]);
+                Toast.makeText(GamesActivity.this, games[position], Toast.LENGTH_LONG).show();
+
+                Intent intent = new Intent(GamesActivity.this, GameActivity.class);
+                intent.putExtra("game", games[position]);
+                intent.putExtra("gameDetails", gameDetails[position]);
+
+                Log.i("gamede",gameDetails[position]);
+
+                startActivity(intent);
+            }
+        });
+
     }
 }
