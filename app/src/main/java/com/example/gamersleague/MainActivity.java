@@ -32,5 +32,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
 
+        if(v == mUsernameButton){
+            String username = mUsernameEditText.getText().toString();
+
+            if(username.isEmpty()){
+                Log.i("username",username);
+                Toast.makeText(MainActivity.this, "Please Enter Username", Toast.LENGTH_LONG).show();
+                mUsernameEditText.setError("Please Enter Your Username");
+            }else{
+                Log.i("username",username);
+                Intent intent = new Intent(MainActivity.this, GamesActivity.class);
+                intent.putExtra("username", username);
+                startActivity(intent);
+
+
+            }
+
+        }
+
+
     }
 }
