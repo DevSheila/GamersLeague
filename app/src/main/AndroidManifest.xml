@@ -27,6 +27,31 @@
             </meta-data>
 
         </activity>
+
+        <activity
+            android:name=".GameActivity"
+            android:theme="@style/Theme.GamersLeague">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.gamersleague.GameActivity"
+                >
+            </meta-data>
+
+        </activity>
+
+
+
+        <activity
+            android:name=".ReviewsActivity"
+            android:theme="@style/Theme.GamersLeague">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.gamersleague.ReviewsActivity"
+                >
+            </meta-data>
+
+        </activity>
+
     </application>
 
 </manifest>
