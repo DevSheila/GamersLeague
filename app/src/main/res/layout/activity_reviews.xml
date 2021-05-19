@@ -11,4 +11,68 @@
         android:layout_height="wrap_content"
         android:hint="Comment"
         />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+
+        >
+
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/ratingRadioGroup"
+            android:padding="10dp">
+
+
+            <RadioButton
+                android:id="@+id/radioButton1"
+
+                android:text="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                />
+
+            <RadioButton
+                android:id="@+id/radioButton2"
+                android:text="2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                />
+
+            <RadioButton
+                android:id="@+id/radioButton3"
+                android:text="3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                />
+
+            <RadioButton
+                android:id="@+id/radioButton4"
+                android:text="4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                />
+
+            <RadioButton
+                android:id="@+id/radioButton5"
+
+                android:text="5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                />
+
+        </RadioGroup>
+
+
+    </LinearLayout>
 </RelativeLayout>
