@@ -17,4 +17,15 @@
         android:textSize="14sp"
         android:textColor="@color/black"/>
 
+    <ListView
+        android:id="@+id/reviewslistView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/gameDetailsTextView"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginRight="1dp" />
+
 </RelativeLayout>
