@@ -32,9 +32,10 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
 
 
+
     private String[] comments= new String[] { "A very enjoyable progressive wave shooter with plenty of upgrades, abilities, cool locations and zombie types." ,"A lot better than I was expecting and if you like games like Crashlands, you'll love this for its cheap price.", "Only played for a few hours, and already it's worth the money. I suggest getting the premium edition as the DLC vehicles help you progress faster, and flatten the steep learning curve. It can run on my ryzen 5 3600 and rx 580 smoothly on on the 'high' graphics setting. Although it has a slow start, it is very addicting." ,"One annoying thing is that the camera is a bit wonky in places.However,would totally reccomend!","Graphics are beautiful and the gameplay is fun for what it is. If you were a fan of Mudrunners, then you will most likely be a fan of this"};
     private String[] ratings = new String[] {"4", "3", "4", "3","4" };
-//"Super game just point and shoot it's that simple brilliant",
+
     ArrayList<String> allComments = new ArrayList<>();
 
 

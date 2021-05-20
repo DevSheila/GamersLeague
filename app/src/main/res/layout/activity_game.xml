@@ -24,14 +24,14 @@
         android:layout_width="match_parent"
         android:layout_margin="10dp"
         android:text=" + Add Comment"
-        android:layout_below="@+id/reviewslistView"
+        android:layout_below="@+id/gameDetailsTextView"
         android:background="@color/colorPrimaryText"
         android:textColor="@android:color/white"/>
     <ListView
         android:id="@+id/reviewslistView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/gameDetailsTextView"
+        android:layout_below="@+id/addCommentButton"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_marginTop="11dp"
