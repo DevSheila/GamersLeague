@@ -32,8 +32,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
 
 
-    private String[] comments= new String[] {"Sweet Hereafter", "Cricket", "Hawthorne Fish House", "Viking Soul Food" };
-    private String[] ratings = new String[] {"Vegan Food", "Breakfast", "Fishs Dishs", "Scandinavian" };
+    private String[] comments= new String[] {"Intense but worth it", "Great and realistic graphics", "Too vulgar,wish it was more censored", "The game is rigged" };
+    private String[] ratings = new String[] {"4", "3", "2", "3" };
 
     ArrayList<String> allComments = new ArrayList<>();
 
@@ -54,7 +54,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         String game =intent.getStringExtra("game");
 
 
-        mgameDetailsTextView.setText("Name : "+ game + " \n Details: "+ gameDetails);
+        mgameDetailsTextView.setText("Name : "+ game + " \n "+ gameDetails);
 
         maddCommentButton.setOnClickListener(this);
 

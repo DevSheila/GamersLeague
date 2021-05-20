@@ -23,8 +23,9 @@ public class GamesActivity extends AppCompatActivity {
     @BindView(R.id.listView)
     ListView mListView;
 
-    private String[] games = new String[]{"Sweet Hereafter", "Cricket", "Hawthorne Fish House", "Viking Soul Food", "Red Square", "Horse Brass", "Dick's Kitchen", "Taco Bell", "Me Kha Noodle Bar", "La Bonita Taqueria", "Smokehouse Tavern", "Pembiche", "Kay's Bar", "Gnarly Grey", "Slappy Cakes", "Mi Mero Mole"};
-    private String[] gameDetails = new String[]{"Vegan Food", "Breakfast", "Fishs Dishs", "Scandinavian", "Coffee", "English Food", "Burgers", "Fast Food", "Noodle Soups", "Mexican", "BBQ", "Cuban", "Bar Food", "Sports Bar", "Breakfast", "Mexican"};
+    private String[] games = new String[]{"Dragon Age:Origins","Left  Dead 2","Uncharted 2:Among theives","Limbo","Mass Effect 2", "Red Dead Redemption","StarCraft||:Wings of Liberty","Super Mario Galaxy 2","Super Meat Boy","Batmman:Arkham City","Dark Souls","The Elder Scrolls V:Skyrim","MineCraft","Portal 2","Dishonoured","Journey"};
+    private String[] gameDetails = new String[]{ "GENRE:Role-playing ,PUBLISHER:Electronic Arts PLATFORM: PC,Play Station 3, Xbox 360","GENRE:fisrt person shooter PUBLISHER: Valve PLATFORM:PC,XBox 360 ","GENRE: Action-Adventure PUBLISHER: Sony Computer Entertainment PLATFORM:Play Station 3","GENRE:Platform PUBLISHER: Microsoft Game Studios PLATFORM:XBOX 360","GENRE: Action role-playing,PUBLISHER: Electronic Arts PLATFORM:PC ,Xbox 360","GENRE: Action-Adventure PUBLISHER:Rockstar games  PLATFORM: PlayStation 3,box 360","GENRE:Real-time  stratedgy PUBLISHER:Blizzard Entertainment  PLATFORM:PC","GENRE:Platform PUBLISHER:Nintendo  PLATFORM:Wii","GENRE:Platform PUBLISHER:Team Meat  PLATFORM:Xbox 360","GENRE: Action-adventure PUBLISHER:Warner Bros.  PLATFORM: Playstatsion 3,Xbox 360","GENRE: Action-role playing PUBLISHER: Namco Bandai Games PLATFORM:Playstaytion 3 ,Xbox 360","GENRE:Action-Role playing PUBLISHER:Bethesda Softworks  PLATFORM:PC,Play Station 3,Xbox 360","GENRE: Snadbox PUBLISHER:Mojang  PLATFORM:PC","GENRE: Puzzle-platformerPUBLISHER:Valve  PLATFORM:PC,Playstatsion 3,Xbox 360","GENRE: Stealth PUBLISHER:Bethesda Softworks PLATFORM:PC,Playstation 3, Xbox 360","GENRE:Adventure PUBLISHER:Sony Computer Entertainment  PLATFORM:PlayStation 3"};
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
