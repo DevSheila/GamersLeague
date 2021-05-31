@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GamersLeague">
-        <activity android:name=".MainActivity">
+        <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -18,22 +18,11 @@
         </activity>
 
         <activity
-            android:name=".GamesActivity"
+            android:name=".ui.GameActivity"
             android:theme="@style/Theme.GamersLeague">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.gamersleague.GamesActivity"
-                >
-            </meta-data>
-
-        </activity>
-
-        <activity
-            android:name=".GameActivity"
-            android:theme="@style/Theme.GamersLeague">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.gamersleague.GameActivity"
+                android:value="com.example.gamersleague.ui.GameActivity"
                 >
             </meta-data>
 
@@ -42,11 +31,11 @@
 
 
         <activity
-            android:name=".ReviewsActivity"
+            android:name=".ui.ReviewsActivity"
             android:theme="@style/Theme.GamersLeague">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.gamersleague.ReviewsActivity"
+                android:value="com.example.gamersleague.ui.ReviewsActivity"
                 >
             </meta-data>
 

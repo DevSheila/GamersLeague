@@ -1,5 +1,5 @@
 
-package com.example.gamersleague;
+package com.example.gamersleague.models;
 
 //import javax.annotation.Generated;
 import com.google.gson.annotations.Expose;

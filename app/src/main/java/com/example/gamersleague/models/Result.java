@@ -1,5 +1,5 @@
 
-package com.example.gamersleague;
+package com.example.gamersleague.models;
 
 import java.util.List;
 //import javax.annotation.Generated;

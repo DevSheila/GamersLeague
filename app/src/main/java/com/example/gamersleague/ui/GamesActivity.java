@@ -1,4 +1,4 @@
-package com.example.gamersleague;
+package com.example.gamersleague.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +10,13 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.gamersleague.GamesArrayAdapter;
+import com.example.gamersleague.network.GiantBombApi;
+import com.example.gamersleague.network.GiantBombClient;
+import com.example.gamersleague.R;
+import com.example.gamersleague.models.GiantBombGamesResponse;
+import com.example.gamersleague.models.Result;
 
 import java.util.List;
 

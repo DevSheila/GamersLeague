@@ -1,20 +1,15 @@
-package com.example.gamersleague;
+package com.example.gamersleague.network;
 
+import com.example.gamersleague.network.GiantBombApi;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import java.io.IOException;
-
-import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 import static com.example.gamersleague.Constants.GIANT_BOMB_BASE_URL;
-import static com.example.gamersleague.Constants.GIANT_BOMB_KEY;
 
 public class GiantBombClient {
     private static Retrofit retrofit;

@@ -1,41 +1,41 @@
 
-package com.example.gamersleague;
+package com.example.gamersleague.models;
 
 //import javax.annotation.Generated;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 //@Generated("jsonschema2pojo")
-public class ImageTag {
+public class OriginalGameRating {
 
     @SerializedName("api_detail_url")
     @Expose
     private String apiDetailUrl;
+    @SerializedName("id")
+    @Expose
+    private Integer id;
     @SerializedName("name")
     @Expose
     private String name;
-    @SerializedName("total")
-    @Expose
-    private Integer total;
 
     /**
      * No args constructor for use in serialization
      * 
      */
-    public ImageTag() {
+    public OriginalGameRating() {
     }
 
     /**
      * 
      * @param apiDetailUrl
-     * @param total
      * @param name
+     * @param id
      */
-    public ImageTag(String apiDetailUrl, String name, Integer total) {
+    public OriginalGameRating(String apiDetailUrl, Integer id, String name) {
         super();
         this.apiDetailUrl = apiDetailUrl;
+        this.id = id;
         this.name = name;
-        this.total = total;
     }
 
     public String getApiDetailUrl() {
@@ -46,20 +46,20 @@ public class ImageTag {
         this.apiDetailUrl = apiDetailUrl;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Integer getTotal() {
-        return total;
-    }
-
-    public void setTotal(Integer total) {
-        this.total = total;
     }
 
 }
