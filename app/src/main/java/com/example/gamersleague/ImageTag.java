@@ -1,11 +1,11 @@
 
 package com.example.gamersleague;
 
-import javax.annotation.Generated;
+//import javax.annotation.Generated;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-@Generated("jsonschema2pojo")
+//@Generated("jsonschema2pojo")
 public class ImageTag {
 
     @SerializedName("api_detail_url")

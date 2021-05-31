@@ -8,15 +8,18 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+import static com.example.gamersleague.Constants.GIANT_BOMB_KEY;
 
 public class GamesActivity extends AppCompatActivity {
     @BindView(R.id.usernameTextView)
@@ -36,11 +39,10 @@ public class GamesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_games);
-
         ButterKnife.bind(this);
 
-        ArrayList<String> allGames = new ArrayList<>();
-        allGames.addAll(Arrays.asList(games));
+//        ArrayList<String> allGames = new ArrayList<>();
+//        allGames.addAll(Arrays.asList(games));
 
 //        GamesArrayAdapter listAdapter = new GamesArrayAdapter(GamesActivity.this, android.R.layout.simple_list_item_1,games);
 //        mListView.setAdapter(listAdapter);
@@ -48,22 +50,52 @@ public class GamesActivity extends AppCompatActivity {
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Log.i("game",games[position]);
-                Toast.makeText(GamesActivity.this, games[position], Toast.LENGTH_LONG).show();
-
-                Intent intent = new Intent(GamesActivity.this, GameActivity.class);
-                intent.putExtra("game", games[position]);
-                intent.putExtra("gameDetails", gameDetails[position]);
-
-                Log.i("gamede",gameDetails[position]);
-
-                startActivity(intent);
+//                Log.i("game",games[position]);
+//                Toast.makeText(GamesActivity.this, games[position], Toast.LENGTH_LONG).show();
+//
+//                Intent intent = new Intent(GamesActivity.this, GameActivity.class);
+//                intent.putExtra("game", games[position]);
+//                intent.putExtra("gameDetails", gameDetails[position]);
+//                Log.i("gamede",gameDetails[position]);
+//                startActivity(intent);
             }
         });
         Intent intent = getIntent();
         String username = intent.getStringExtra("username");
         mUsernameTextView.setText("Hello "+username+" .Welcome to Gamers League");
 
+        GiantBombApi client = GiantBombClient.getClient();
+        Call<GiantBombGamesResponse> call = client.getResults(GIANT_BOMB_KEY,"json");
+
+        call.enqueue(new Callback<GiantBombGamesResponse>() {
+
+            @Override
+            public void onResponse(Call<GiantBombGamesResponse> call, Response<GiantBombGamesResponse> response) {
+                hideProgressBar();
+                if (response.isSuccessful()) {
+                    List<Result> gamesList = response.body().getResults();
+                    String[] games = new String[gamesList.size()];
+
+                    for (int i = 0; i < games.length; i++){
+                        games[i] = gamesList.get(i).getName();
+                    }
+
+                    GamesArrayAdapter listAdapter = new GamesArrayAdapter(GamesActivity.this, android.R.layout.simple_list_item_1,games);
+                    mListView.setAdapter(listAdapter);
+
+                    showGames();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<GiantBombGamesResponse> call, Throwable t) {
+                Log.d("msg",t.getMessage());
+                hideProgressBar();
+                showFailureMessage();
+//                mErrorTextView.setText(t.getMessage());
+
+            }
+        });
     }
 
     private void showFailureMessage() {
