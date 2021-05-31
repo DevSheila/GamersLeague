@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,9 +23,13 @@ public class GamesActivity extends AppCompatActivity {
     TextView mUsernameTextView;
     @BindView(R.id.listView)
     ListView mListView;
+    @BindView(R.id.errorTextView)
+    TextView mErrorTextView;
+    @BindView(R.id.progressBar)
+    ProgressBar mProgressBar;
 
-    private String[] games = new String[]{"Dragon Age:Origins","Left  Dead 2","Uncharted 2:Among theives","Limbo","Mass Effect 2", "Red Dead Redemption","StarCraft||:Wings of Liberty","Super Mario Galaxy 2","Super Meat Boy","Batmman:Arkham City","Dark Souls","The Elder Scrolls V:Skyrim","MineCraft","Portal 2","Dishonoured","Journey"};
-    private String[] gameDetails = new String[]{ "GENRE:Role-playing ,PUBLISHER:Electronic Arts PLATFORM: PC,Play Station 3, Xbox 360","GENRE:fisrt person shooter PUBLISHER: Valve PLATFORM:PC,XBox 360 ","GENRE: Action-Adventure PUBLISHER: Sony Computer Entertainment PLATFORM:Play Station 3","GENRE:Platform PUBLISHER: Microsoft Game Studios PLATFORM:XBOX 360","GENRE: Action role-playing,PUBLISHER: Electronic Arts PLATFORM:PC ,Xbox 360","GENRE: Action-Adventure PUBLISHER:Rockstar games  PLATFORM: PlayStation 3,box 360","GENRE:Real-time  stratedgy PUBLISHER:Blizzard Entertainment  PLATFORM:PC","GENRE:Platform PUBLISHER:Nintendo  PLATFORM:Wii","GENRE:Platform PUBLISHER:Team Meat  PLATFORM:Xbox 360","GENRE: Action-adventure PUBLISHER:Warner Bros.  PLATFORM: Playstatsion 3,Xbox 360","GENRE: Action-role playing PUBLISHER: Namco Bandai Games PLATFORM:Playstaytion 3 ,Xbox 360","GENRE:Action-Role playing PUBLISHER:Bethesda Softworks  PLATFORM:PC,Play Station 3,Xbox 360","GENRE: Snadbox PUBLISHER:Mojang  PLATFORM:PC","GENRE: Puzzle-platformerPUBLISHER:Valve  PLATFORM:PC,Playstatsion 3,Xbox 360","GENRE: Stealth PUBLISHER:Bethesda Softworks PLATFORM:PC,Playstation 3, Xbox 360","GENRE:Adventure PUBLISHER:Sony Computer Entertainment  PLATFORM:PlayStation 3"};
+//    private String[] games = new String[]{"Dragon Age:Origins","Left  Dead 2","Uncharted 2:Among theives","Limbo","Mass Effect 2", "Red Dead Redemption","StarCraft||:Wings of Liberty","Super Mario Galaxy 2","Super Meat Boy","Batmman:Arkham City","Dark Souls","The Elder Scrolls V:Skyrim","MineCraft","Portal 2","Dishonoured","Journey"};
+//    private String[] gameDetails = new String[]{ "GENRE:Role-playing ,PUBLISHER:Electronic Arts PLATFORM: PC,Play Station 3, Xbox 360","GENRE:fisrt person shooter PUBLISHER: Valve PLATFORM:PC,XBox 360 ","GENRE: Action-Adventure PUBLISHER: Sony Computer Entertainment PLATFORM:Play Station 3","GENRE:Platform PUBLISHER: Microsoft Game Studios PLATFORM:XBOX 360","GENRE: Action role-playing,PUBLISHER: Electronic Arts PLATFORM:PC ,Xbox 360","GENRE: Action-Adventure PUBLISHER:Rockstar games  PLATFORM: PlayStation 3,box 360","GENRE:Real-time  stratedgy PUBLISHER:Blizzard Entertainment  PLATFORM:PC","GENRE:Platform PUBLISHER:Nintendo  PLATFORM:Wii","GENRE:Platform PUBLISHER:Team Meat  PLATFORM:Xbox 360","GENRE: Action-adventure PUBLISHER:Warner Bros.  PLATFORM: Playstatsion 3,Xbox 360","GENRE: Action-role playing PUBLISHER: Namco Bandai Games PLATFORM:Playstaytion 3 ,Xbox 360","GENRE:Action-Role playing PUBLISHER:Bethesda Softworks  PLATFORM:PC,Play Station 3,Xbox 360","GENRE: Snadbox PUBLISHER:Mojang  PLATFORM:PC","GENRE: Puzzle-platformerPUBLISHER:Valve  PLATFORM:PC,Playstatsion 3,Xbox 360","GENRE: Stealth PUBLISHER:Bethesda Softworks PLATFORM:PC,Playstation 3, Xbox 360","GENRE:Adventure PUBLISHER:Sony Computer Entertainment  PLATFORM:PlayStation 3"};
 
 
     @Override
@@ -37,8 +42,8 @@ public class GamesActivity extends AppCompatActivity {
         ArrayList<String> allGames = new ArrayList<>();
         allGames.addAll(Arrays.asList(games));
 
-        GamesArrayAdapter listAdapter = new GamesArrayAdapter(GamesActivity.this, android.R.layout.simple_list_item_1,games);
-        mListView.setAdapter(listAdapter);
+//        GamesArrayAdapter listAdapter = new GamesArrayAdapter(GamesActivity.this, android.R.layout.simple_list_item_1,games);
+//        mListView.setAdapter(listAdapter);
 
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -59,5 +64,24 @@ public class GamesActivity extends AppCompatActivity {
         String username = intent.getStringExtra("username");
         mUsernameTextView.setText("Hello "+username+" .Welcome to Gamers League");
 
+    }
+
+    private void showFailureMessage() {
+        mErrorTextView.setText("Something went wrong. Please check your Internet connection and try again later");
+        mErrorTextView.setVisibility(View.VISIBLE);
+    }
+
+    private void showUnsuccessfulMessage() {
+        mErrorTextView.setText("Something went wrong. Please try again later");
+        mErrorTextView.setVisibility(View.VISIBLE);
+    }
+
+    private void showGames() {
+        mListView.setVisibility(View.VISIBLE);
+        mUsernameTextView.setVisibility(View.VISIBLE);
+    }
+
+    private void hideProgressBar() {
+        mProgressBar.setVisibility(View.GONE);
     }
 }
