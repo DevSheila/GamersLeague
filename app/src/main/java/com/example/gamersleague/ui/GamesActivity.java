@@ -4,8 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -13,8 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.gamersleague.GamesArrayAdapter;
-import com.example.gamersleague.GamesListAdapter;
+import com.example.gamersleague.adapters.GamesListAdapter;
 import com.example.gamersleague.network.GiantBombApi;
 import com.example.gamersleague.network.GiantBombClient;
 import com.example.gamersleague.R;

@@ -12,7 +12,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.gamersleague.R;
-import com.example.gamersleague.ReviewArrayAdapter;
+import com.example.gamersleague.adapters.ReviewArrayAdapter;
 
 import java.util.ArrayList;
 import java.util.Arrays;

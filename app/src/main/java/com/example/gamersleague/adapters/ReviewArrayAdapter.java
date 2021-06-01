@@ -1,4 +1,4 @@
-package com.example.gamersleague;
+package com.example.gamersleague.adapters;
 
 import android.content.Context;
 import android.widget.ArrayAdapter;
