@@ -6,7 +6,9 @@ import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-//@Generated("jsonschema2pojo")
+import org.parceler.Parcel;
+
+@Parcel
 public class GiantBombGamesResponse {
 
     @SerializedName("results")

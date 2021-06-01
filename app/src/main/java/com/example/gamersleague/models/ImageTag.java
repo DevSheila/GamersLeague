@@ -5,7 +5,9 @@ package com.example.gamersleague.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-//@Generated("jsonschema2pojo")
+import org.parceler.Parcel;
+
+@Parcel
 public class ImageTag {
 
     @SerializedName("api_detail_url")
