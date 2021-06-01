@@ -34,14 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Restaurants near "
-        android:id="@+id/locationTextView"
-        android:layout_centerVertical="false"
-        android:layout_centerHorizontal="true"
-        android:visibility="gone" />
+
 
     <TextView
         android:id="@+id/errorTextView"

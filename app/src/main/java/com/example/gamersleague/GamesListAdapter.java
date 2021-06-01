@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.gamersleague.models.Result;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -48,10 +49,11 @@ public class GamesListAdapter extends RecyclerView.Adapter<GamesListAdapter.Game
     }
 
     public class GamesViewHolder extends RecyclerView.ViewHolder {
-        @BindView(R.id.gameImageView)ImageView mRestaurantImageView;
+        @BindView(R.id.gameImageView)ImageView mGameImageView;
         @BindView(R.id.gameNameTextView)TextView mNameTextView;
         @BindView(R.id.categoryTextView) TextView mCategoryTextView;
         @BindView(R.id.ratingTextView) TextView mRatingTextView;
+
 
         private Context mContext;
 
@@ -62,6 +64,7 @@ public class GamesListAdapter extends RecyclerView.Adapter<GamesListAdapter.Game
         }
 
         public void bindGame(Result result) {
+            Picasso.get().load(result.getImage().getOriginalUrl()).into(mGameImageView);
             mNameTextView.setText(result.getName());
             mCategoryTextView.setText(result.getDateAdded());
             mRatingTextView.setText("Rating: " + result.getOriginalGameRating() + "/5");
