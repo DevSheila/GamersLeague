@@ -1,6 +1,8 @@
 package com.example.gamersleague.ui;
 
+import android.content.Intent;
 import android.icu.util.ULocale;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,7 +25,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class GameDetailFragment extends Fragment {
+public class GameDetailFragment extends Fragment implements View.OnClickListener{
     @BindView(R.id.gameImageView)
     ImageView mImageLabel;
     @BindView(R.id.gameNameTextView)
@@ -32,8 +34,8 @@ public class GameDetailFragment extends Fragment {
     TextView mDescriptionLabel;
     @BindView(R.id.ratingTextView)
     TextView mRatingLabel;
-    @BindView(R.id.websiteTextView)
-    TextView mWebsiteLabel;
+    @BindView(R.id.giantBombTextView)
+    TextView mGiantBomb;
     @BindView(R.id.saveGameButton)
     TextView mSaveGameButton;
 
@@ -60,23 +62,25 @@ public class GameDetailFragment extends Fragment {
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        // Inflate the layout for this fragment
-
         View view =  inflater.inflate(R.layout.fragment_game_detail, container, false);
         ButterKnife.bind(this, view);
+
+
         Picasso.get().load(mResult.getImage().getScreenUrl()).into(mImageLabel);
-
-//        List<String> categories = new ArrayList<>();
-//
-//        for (ULocale.Category category: mRestaurant.getCategories()) {
-//            categories.add(category.getTitle());
-//        }
-
         mNameLabel.setText(mResult.getName());
-        mDescriptionLabel.setText(mResult.getDescription());
+        mDescriptionLabel.setText(mResult.getDeck());
         mRatingLabel.setText(  "/5");
-        
+        mGiantBomb.setOnClickListener(this);
+
         return view;
     }
 
+    @Override
+    public void onClick(View v) {
+        if (v == mGiantBomb) {
+            Intent webIntent = new Intent(Intent.ACTION_VIEW,
+                    Uri.parse(mResult.getSiteDetailUrl()));
+            startActivity(webIntent);
+        }
+    }
 }

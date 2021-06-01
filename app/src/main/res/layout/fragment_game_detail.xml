@@ -79,10 +79,11 @@
                 android:paddingRight="30dp">
 
                 <TextView
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="View on Giant Bomb"
-                    android:id="@+id/websiteTextView"
+                    android:id="@+id/giantBombTextView"
                     android:drawableLeft="@drawable/ic_exit_to_app"
                     android:drawablePadding="4dp"
                     android:textColor="@color/colorTextIcons"
