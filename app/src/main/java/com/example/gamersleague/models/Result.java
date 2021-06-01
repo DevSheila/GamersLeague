@@ -29,18 +29,18 @@ public class Result {
     @SerializedName("description")
     @Expose
     private String description;
-    @SerializedName("expected_release_day")
-    @Expose
-    private Object expectedReleaseDay;
-    @SerializedName("expected_release_month")
-    @Expose
-    private Object expectedReleaseMonth;
-    @SerializedName("expected_release_quarter")
-    @Expose
-    private Object expectedReleaseQuarter;
-    @SerializedName("expected_release_year")
-    @Expose
-    private Object expectedReleaseYear;
+//    @SerializedName("expected_release_day")
+//    @Expose
+//    private Object expectedReleaseDay;
+//    @SerializedName("expected_release_month")
+//    @Expose
+//    private Object expectedReleaseMonth;
+//    @SerializedName("expected_release_quarter")
+//    @Expose
+//    private Object expectedReleaseQuarter;
+//    @SerializedName("expected_release_year")
+//    @Expose
+//    private Object expectedReleaseYear;
     @SerializedName("guid")
     @Expose
     private String guid;
@@ -110,10 +110,10 @@ public class Result {
         this.dateLastUpdated = dateLastUpdated;
         this.deck = deck;
         this.description = description;
-        this.expectedReleaseDay = expectedReleaseDay;
-        this.expectedReleaseMonth = expectedReleaseMonth;
-        this.expectedReleaseQuarter = expectedReleaseQuarter;
-        this.expectedReleaseYear = expectedReleaseYear;
+//        this.expectedReleaseDay = expectedReleaseDay;
+//        this.expectedReleaseMonth = expectedReleaseMonth;
+//        this.expectedReleaseQuarter = expectedReleaseQuarter;
+//        this.expectedReleaseYear = expectedReleaseYear;
         this.guid = guid;
         this.id = id;
         this.image = image;
@@ -173,38 +173,38 @@ public class Result {
     public void setDescription(String description) {
         this.description = description;
     }
+//
+//    public Object getExpectedReleaseDay() {
+//        return expectedReleaseDay;
+//    }
+//
+//    public void setExpectedReleaseDay(Object expectedReleaseDay) {
+//        this.expectedReleaseDay = expectedReleaseDay;
+//    }
+//
+//    public Object getExpectedReleaseMonth() {
+//        return expectedReleaseMonth;
+//    }
+//
+//    public void setExpectedReleaseMonth(Object expectedReleaseMonth) {
+//        this.expectedReleaseMonth = expectedReleaseMonth;
+//    }
 
-    public Object getExpectedReleaseDay() {
-        return expectedReleaseDay;
-    }
-
-    public void setExpectedReleaseDay(Object expectedReleaseDay) {
-        this.expectedReleaseDay = expectedReleaseDay;
-    }
-
-    public Object getExpectedReleaseMonth() {
-        return expectedReleaseMonth;
-    }
-
-    public void setExpectedReleaseMonth(Object expectedReleaseMonth) {
-        this.expectedReleaseMonth = expectedReleaseMonth;
-    }
-
-    public Object getExpectedReleaseQuarter() {
-        return expectedReleaseQuarter;
-    }
-
-    public void setExpectedReleaseQuarter(Object expectedReleaseQuarter) {
-        this.expectedReleaseQuarter = expectedReleaseQuarter;
-    }
-
-    public Object getExpectedReleaseYear() {
-        return expectedReleaseYear;
-    }
-
-    public void setExpectedReleaseYear(Object expectedReleaseYear) {
-        this.expectedReleaseYear = expectedReleaseYear;
-    }
+//    public Object getExpectedReleaseQuarter() {
+//        return expectedReleaseQuarter;
+//    }
+//
+//    public void setExpectedReleaseQuarter(Object expectedReleaseQuarter) {
+//        this.expectedReleaseQuarter = expectedReleaseQuarter;
+//    }
+//
+//    public Object getExpectedReleaseYear() {
+//        return expectedReleaseYear;
+//    }
+//
+//    public void setExpectedReleaseYear(Object expectedReleaseYear) {
+//        this.expectedReleaseYear = expectedReleaseYear;
+//    }
 
     public String getGuid() {
         return guid;

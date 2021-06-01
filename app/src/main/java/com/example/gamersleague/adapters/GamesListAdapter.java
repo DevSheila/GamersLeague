@@ -1,6 +1,7 @@
 package com.example.gamersleague.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,14 +13,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.gamersleague.R;
 import com.example.gamersleague.models.Result;
+import com.example.gamersleague.ui.GamesDetailActivity;
 import com.squareup.picasso.Picasso;
+
+import org.parceler.Parcels;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class GamesListAdapter extends RecyclerView.Adapter<GamesListAdapter.GamesViewHolder>{
+public class GamesListAdapter extends RecyclerView.Adapter<GamesListAdapter.GamesViewHolder> {
 
     private List<Result> mGames;
     private Context mContext;
@@ -49,7 +53,7 @@ public class GamesListAdapter extends RecyclerView.Adapter<GamesListAdapter.Game
         return mGames.size();
     }
 
-    public class GamesViewHolder extends RecyclerView.ViewHolder {
+    public class GamesViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         @BindView(R.id.gameImageView)ImageView mGameImageView;
         @BindView(R.id.gameNameTextView)TextView mNameTextView;
         @BindView(R.id.categoryTextView) TextView mCategoryTextView;
@@ -62,6 +66,7 @@ public class GamesListAdapter extends RecyclerView.Adapter<GamesListAdapter.Game
             super(itemView);
             ButterKnife.bind(this, itemView);
             mContext = itemView.getContext();
+            itemView.setOnClickListener(this);
         }
 
         public void bindGame(Result result) {
@@ -69,6 +74,15 @@ public class GamesListAdapter extends RecyclerView.Adapter<GamesListAdapter.Game
             mNameTextView.setText(result.getName());
             mCategoryTextView.setText(result.getDateAdded());
             mRatingTextView.setText("Rating: " + result.getOriginalGameRating() + "/5");
+        }
+
+        @Override
+        public void onClick(View v) {
+            int itemPosition = getLayoutPosition();
+            Intent intent = new Intent(mContext, GamesDetailActivity.class);
+            intent.putExtra("position", itemPosition);
+            intent.putExtra("games", Parcels.wrap(mGames));
+            mContext.startActivity(intent);
         }
     }
 }
