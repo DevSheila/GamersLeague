@@ -28,6 +28,17 @@
 
         </activity>
 
+        <activity
+            android:name=".ui.GamesActivity"
+            android:theme="@style/Theme.GamersLeague">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.gamersleague.ui.GamesActivity"
+                >
+            </meta-data>
+
+        </activity>
+
 
 
         <activity

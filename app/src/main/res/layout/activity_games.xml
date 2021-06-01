@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.GamesActivity"
-
-    >
-
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
+    tools:context=".ui.GamesActivity">
     <TextView
         android:id="@+id/usernameTextView"
         android:layout_width="wrap_content"
@@ -14,23 +16,32 @@
         android:layout_centerHorizontal="true"
         android:text="Hello,"
         android:layout_marginVertical="10dp"
-        android:textSize="14sp"/>
-    <ListView
-        android:id="@+id/listView"
+        android:textSize="14sp"
+        android:layout_above="@+id/linear1"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/usernameTextView"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="11dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginRight="1dp" />
+        android:layout_marginTop="16dp"
+        android:visibility="gone"/>
+
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Restaurants near "
+        android:id="@+id/locationTextView"
+        android:layout_centerVertical="false"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/errorTextView"
@@ -40,3 +51,4 @@
         android:layout_margin="16dp"
         android:visibility="gone" />
 </RelativeLayout>
+
