@@ -44,19 +44,7 @@ public class GamesActivity extends AppCompatActivity {
 
 
 
-//        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//// **               Log.i("game",games[position]);
-////  **              Toast.makeText(GamesActivity.this, games[position], Toast.LENGTH_LONG).show();
-////**
-////  **              Intent intent = new Intent(GamesActivity.this, GameActivity.class);
-////   **             intent.putExtra("game", games[position]);
-////   **             intent.putExtra("gameDetails", gameDetails[position]);
-////    **            Log.i("gamede",gameDetails[position]);
-////     **           startActivity(intent);
-//            }
-//        });
+
         Intent intent = getIntent();
         String username = intent.getStringExtra("username");
         mUsernameTextView.setText("Hello "+username+" .Welcome to Gamers League");
