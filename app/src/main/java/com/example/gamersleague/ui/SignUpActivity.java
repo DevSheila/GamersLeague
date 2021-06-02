@@ -48,8 +48,20 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 //        createAuthStateListener();
     }
 
+    @Override
+    public void onClick(View v) {
+        if (v == mLoginTextView) {
+            Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+            finish();
+        }
+
+        if (v == mCreateUserButton) {
+            createNewUser();
 
 
 
 
-}
+
+        }
