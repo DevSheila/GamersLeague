@@ -73,6 +73,7 @@ public class GamesListAdapter extends RecyclerView.Adapter<GamesListAdapter.Game
             Picasso.get().load(result.getImage().getOriginalUrl()).into(mGameImageView);
             mNameTextView.setText(result.getName());
             mCategoryTextView.setText(result.getDateAdded());
+
             mRatingTextView.setText("Rating: " + result.getOriginalGameRating() + "/5");
         }
 
