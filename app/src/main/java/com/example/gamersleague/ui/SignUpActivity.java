@@ -45,7 +45,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         mCreateUserButton.setOnClickListener(this);
         mAuth = FirebaseAuth.getInstance();
 
-//        createAuthStateListener();
+        createAuthStateListener();
     }
 
     @Override
@@ -93,6 +93,20 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
             }
 
         };
+    }
+
+    @Override
+    public void onStart(){
+        super.onStart();
+        mAuth.addAuthStateListener(mAuthListener);
+    }
+
+    @Override
+    public void onStop(){
+        super.onStop();
+        if(mAuthListener != null){
+            mAuth.removeAuthStateListener(mAuthListener);
+        }
     }
 
 
