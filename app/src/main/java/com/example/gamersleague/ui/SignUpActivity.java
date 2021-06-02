@@ -2,6 +2,7 @@ package com.example.gamersleague.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.text.method.SingleLineTransformationMethod;
 import android.util.Log;
 import android.util.Patterns;
@@ -22,6 +23,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Objects;
 
@@ -32,6 +35,11 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     public static final String TAG = SignUpActivity.class.getSimpleName();
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
+
+//    @BindView(R.id.submitUsernameButton)
+//    Button mUsernameButton;
+//    @BindView(R.id.usernameEditText)
+//    EditText mUsernameEditText;
 
     @BindView(R.id.createUserButton)
     Button mCreateUserButton;
@@ -99,6 +107,12 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
                 createFirebaseUserProfile(Objects.requireNonNull(task.getResult().getUser()));
                 Log.d(TAG, "Authentication successful");
+
+
+
+                Intent intent = new Intent(SignUpActivity.this, GamesActivity.class);
+                intent.putExtra("username",name );
+                startActivity(intent);
             } else {
                 Toast.makeText(SignUpActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
             }
@@ -109,13 +123,17 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         mAuthListener = firebaseAuth -> {
             final FirebaseUser user = firebaseAuth.getCurrentUser();
             if (user != null) {
-                Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
+
+                Intent intent = new Intent(SignUpActivity.this, GamesActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
                 startActivity(intent);
                 finish();
             }
+
         };
     }
+
 
 //    @Override
 //    public void onStart() {
@@ -182,7 +200,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                         hideProgressBar();
                         if (task.isSuccessful()) {
 //                            Log.d(TAG, user.getDisplayName());
-                            Toast.makeText(SignUpActivity.this, "The display name has ben set", Toast.LENGTH_LONG).show();
+                            Toast.makeText(SignUpActivity.this, "The display name has been set", Toast.LENGTH_LONG).show();
                         }
                     }
                 });
