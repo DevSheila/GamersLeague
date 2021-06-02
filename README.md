@@ -39,6 +39,7 @@ If not , they get to know what they can work on.
 1. Gradle
 1. xml
 1. Giant Bomb Api
+1. Firebase
 
 
 ## Setup
