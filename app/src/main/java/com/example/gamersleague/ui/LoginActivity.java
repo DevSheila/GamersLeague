@@ -105,7 +105,7 @@ public class LoginActivity extends  AppCompatActivity implements View.OnClickLis
                         String uName = mAuth.getCurrentUser().getDisplayName();
                         DatabaseReference username = databaseUsers.child(id).child("username");
                         Intent intent = new Intent(LoginActivity.this, GamesActivity.class);
-                        intent.putExtra("username", username.toString());
+                        intent.putExtra("username", uName);
                         Log.d("namee",uName);
                         startActivity(intent);
                         if (!task.isSuccessful()) {
