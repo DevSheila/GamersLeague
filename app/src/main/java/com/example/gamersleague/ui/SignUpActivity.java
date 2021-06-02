@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.SingleLineTransformationMethod;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -32,59 +33,106 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
-
-    @BindView(R.id.createUserButton)Button mCreateUserButton;
-    @BindView(R.id.nameEditText)EditText mNameEditText;
-    @BindView(R.id.emailEditText) EditText mEmailEditText;
-    @BindView(R.id.passwordEditText) EditText mPasswordEditText;
-    @BindView(R.id.confirmPasswordEditText) EditText mConfirmPasswordEditText;
-    @BindView(R.id.loginTextView)TextView mLoginTextView;
-
-    @BindView(R.id.firebaseProgressBar)ProgressBar mSignInProgressBar;
-    @BindView(R.id.loadingTextView) TextView mLoadingSignUp;
+    @BindView(R.id.createUserButton)
+    Button mCreateUserButton;
+    @BindView(R.id.nameEditText)
+    EditText mNameEditText;
+    @BindView(R.id.emailEditText)
+    EditText mEmailEditText;
+    @BindView(R.id.passwordEditText)
+    EditText mPasswordEditText;
+    @BindView(R.id.confirmPasswordEditText)
+    EditText mConfirmPasswordEditText;
+    @BindView(R.id.loginTextView)
+    TextView mLoginTextView;
+    @BindView(R.id.firebaseProgressBar)
+    ProgressBar mSignInProgressBar;
+    @BindView(R.id.loadingTextView)
+    TextView mLoadingSignUp;
 
     private String mName;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
         ButterKnife.bind(this);
 
+        mAuth = FirebaseAuth.getInstance();
+
         mLoginTextView.setOnClickListener(this);
         mCreateUserButton.setOnClickListener(this);
-        mAuth = FirebaseAuth.getInstance();
 
         createAuthStateListener();
     }
 
-    private void showProgressBar() {
-        mSignInProgressBar.setVisibility(View.VISIBLE);
-        mLoadingSignUp.setVisibility(View.VISIBLE);
-        mLoadingSignUp.setText("Sign Up process in Progress");
-    }
-
-    private void hideProgressBar() {
-        mSignInProgressBar.setVisibility(View.GONE);
-        mLoadingSignUp.setVisibility(View.GONE);
-    }
-
-
     @Override
-    public void onClick(View v) {
-        if (v == mLoginTextView) {
+    public void onClick(View view) {
+        if (view == mLoginTextView) {
             Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
             finish();
         }
 
-        if (v == mCreateUserButton) {
+        if (view == mCreateUserButton) {
             createNewUser();
         }
     }
+
+    private void createNewUser() {
+        final String name = mNameEditText.getText().toString().trim();
+        final String email = mEmailEditText.getText().toString().trim();
+        mName = mNameEditText.getText().toString().trim();
+        String password = mPasswordEditText.getText().toString().trim();
+        String confirmPassword = mConfirmPasswordEditText.getText().toString().trim();
+
+        boolean validEmail = isValidEmail(email);
+        boolean validName = isValidName(name);
+        boolean validPassword = isValidPassword(password, confirmPassword);
+        if (!validEmail || !validName || !validPassword) return;
+
+        showProgressBar();
+
+        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, task -> {
+            if (task.isSuccessful()) {
+
+                createFirebaseUserProfile(Objects.requireNonNull(task.getResult().getUser()));
+                Log.d(TAG, "Authentication successful");
+            } else {
+                Toast.makeText(SignUpActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void createAuthStateListener() {
+        mAuthListener = firebaseAuth -> {
+            final FirebaseUser user = firebaseAuth.getCurrentUser();
+            if (user != null) {
+                Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                finish();
+            }
+        };
+    }
+
+//    @Override
+//    public void onStart() {
+//        super.onStart();
+//        mAuth.addAuthStateListener(mAuthListener);
+//    }
+//
+//    @Override
+//    public void onStop() {
+//        super.onStop();
+//        if (mAuthListener != null) {
+//            mAuth.removeAuthStateListener(mAuthListener);
+//        }
+//    }
+
     private boolean isValidEmail(String email) {
-        boolean isGoodEmail =
-                (email != null && android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches());
+        boolean isGoodEmail = (email != null && Patterns.EMAIL_ADDRESS.matcher(email).matches());
         if (!isGoodEmail) {
             mEmailEditText.setError("Please enter a valid email address");
             return false;
@@ -110,88 +158,33 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         }
         return true;
     }
-    public void createNewUser() {
-        final String name = mNameEditText.getText().toString().trim();
-        final String email = mEmailEditText.getText().toString().trim();
-        String password = mPasswordEditText.getText().toString().trim();
-        String confirmPassword = mConfirmPasswordEditText.getText().toString().trim();
-        mName = mNameEditText.getText().toString().trim();
 
-        boolean validmName = isValidName(mName);
-        boolean validEmail = isValidEmail(email);
-        boolean validName = isValidName(name);
-        boolean validPassword = isValidPassword(password, confirmPassword);
-        if (!validEmail || !validName || !validPassword) return;
-
-        showProgressBar();
-        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-
-                if (task.isSuccessful()) {
-                    Log.d(TAG, "Authentication successful");
-                } else {
-                    Toast.makeText(SignUpActivity.this, "Authentication failed.",
-                            Toast.LENGTH_SHORT).show();
-                }
-
-            }
-
-        });
+    private void showProgressBar() {
+        mSignInProgressBar.setVisibility(View.VISIBLE);
+        mLoadingSignUp.setVisibility(View.VISIBLE);
+        mLoadingSignUp.setText("Sign Up process in Progress");
     }
-    private void createAuthStateListener() {
-        mAuthListener = new FirebaseAuth.AuthStateListener() {
 
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                final FirebaseUser user = firebaseAuth.getCurrentUser();
-                if (user != null) {
-                    Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(intent);
-                    finish();
-                }
-            }
-
-        };
+    private void hideProgressBar() {
+        mSignInProgressBar.setVisibility(View.GONE);
+        mLoadingSignUp.setVisibility(View.GONE);
     }
 
     private void createFirebaseUserProfile(final FirebaseUser user) {
-
         UserProfileChangeRequest addProfileName = new UserProfileChangeRequest.Builder()
                 .setDisplayName(mName)
                 .build();
 
         user.updateProfile(addProfileName)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
-
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
+                        hideProgressBar();
                         if (task.isSuccessful()) {
-                            Log.d(TAG, Objects.requireNonNull(user.getDisplayName()));
+//                            Log.d(TAG, user.getDisplayName());
                             Toast.makeText(SignUpActivity.this, "The display name has ben set", Toast.LENGTH_LONG).show();
                         }
                     }
-
                 });
     }
-
-//    @Override
-//    public void onStart(){
-//        super.onStart();
-//        mAuth.addAuthStateListener(mAuthListener);
-//    }
-//
-//    @Override
-//    public void onStop(){
-//        super.onStop();
-//        if(mAuthListener != null){
-//            mAuth.removeAuthStateListener(mAuthListener);
-//        }
-//    }
-
-
-
-
 }
