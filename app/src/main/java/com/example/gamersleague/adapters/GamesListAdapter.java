@@ -26,17 +26,15 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class GamesListAdapter extends RecyclerView.Adapter<GamesListAdapter.GamesViewHolder> implements Filterable {
+public class GamesListAdapter extends RecyclerView.Adapter<GamesListAdapter.GamesViewHolder>{
 
     private List<Result> mGames;
     private Context mContext;
 
-    private List<Result> mGamesFull;
 
     public GamesListAdapter(Context context, List<Result> games) {
         mContext = context;
         mGames = games;
-        mGamesFull =new ArrayList<>(games);
     }
 
 
@@ -59,43 +57,7 @@ public class GamesListAdapter extends RecyclerView.Adapter<GamesListAdapter.Game
         return mGames.size();
     }
 
-    @Override
-    public Filter getFilter() {
-        return exampleFilter;
-    }
 
-    private  Filter exampleFilter = new Filter(){
-
-        @Override
-        protected FilterResults performFiltering(CharSequence constraint) {
-           List<Result> filteredList = new ArrayList<>();
-
-           if(constraint == null || constraint.length()==0){
-               filteredList.addAll(mGamesFull);
-           }else{
-               String filterPattern = constraint.toString().toLowerCase().trim();
-
-               for(Result item: mGamesFull){
-                   //intead of "contains" below,, you can use starts with & other methods
-                   //try filtering with other fields
-                   if(item.getName().toLowerCase().contains(filterPattern)){
-                       filteredList.add(item);
-                   }
-               }
-           }
-            FilterResults results = new FilterResults();
-            results.values= filteredList;
-            return results;
-        }
-
-        @Override
-        protected void publishResults(CharSequence constraint, FilterResults filterresults) {
-            mGamesFull.clear();
-            mGamesFull.addAll((List) filterresults.values);
-            notifyDataSetChanged();
-
-        }
-    };
 
     public class GamesViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         @BindView(R.id.gameImageView)ImageView mGameImageView;
