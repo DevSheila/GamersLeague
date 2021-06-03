@@ -9,12 +9,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.gamersleague.Constants;
 import com.example.gamersleague.R;
 import com.example.gamersleague.models.Result;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
@@ -34,6 +38,8 @@ public class GameDetailFragment extends Fragment implements View.OnClickListener
     TextView mDescriptionLabel;
     @BindView(R.id.ratingTextView)
     TextView mRatingLabel;
+    @BindView(R.id.favouritesTextView)
+    TextView mFavouritesLabel;
     @BindView(R.id.giantBombTextView)
     TextView mGiantBomb;
     @BindView(R.id.saveGameButton)
@@ -71,6 +77,7 @@ public class GameDetailFragment extends Fragment implements View.OnClickListener
         mDescriptionLabel.setText(mResult.getDeck());
         mRatingLabel.setText(  "/5");
         mGiantBomb.setOnClickListener(this);
+        mFavouritesLabel.setOnClickListener(this);
 
         return view;
     }
@@ -81,6 +88,13 @@ public class GameDetailFragment extends Fragment implements View.OnClickListener
             Intent webIntent = new Intent(Intent.ACTION_VIEW,
                     Uri.parse(mResult.getSiteDetailUrl()));
             startActivity(webIntent);
+        }
+        if(v == mFavouritesLabel){
+            DatabaseReference gamesRef = FirebaseDatabase
+                    .getInstance()
+                    .getReference(Constants.FIREBASE_CHILD_GAMES);
+            gamesRef.push().setValue(mResult);
+            Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
         }
     }
 }

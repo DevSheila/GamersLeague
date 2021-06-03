@@ -36,7 +36,7 @@ public class GamesListAdapter extends RecyclerView.Adapter<GamesListAdapter.Game
     public GamesListAdapter(Context context, List<Result> games) {
         mContext = context;
         mGames = games;
-        mGames=new ArrayList<>(games);
+        mGamesFull =new ArrayList<>(games);
     }
 
 
