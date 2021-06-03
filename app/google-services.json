@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "257451004482",
+    "project_id": "gamersleague-f7dd2",
+    "storage_bucket": "gamersleague-f7dd2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:257451004482:android:907171dfd3837c3f35d3db",
+        "android_client_info": {
+          "package_name": "com.example.gamersleague"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "257451004482-rc9rji0ohm3lvuepo9dmd4352pktnb3r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.gamersleague",
+            "certificate_hash": "437f4d0468d60b6e7e99fcca4c39b61b7585efff"
+          }
+        },
+        {
+          "client_id": "257451004482-slg1babf8j8pqelsnisg6nsgqeng82cj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA8b11ZcWtFcGER401qhLUHA_QUIpdWdMM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "257451004482-slg1babf8j8pqelsnisg6nsgqeng82cj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,4 +1,4 @@
-package com.example.gamersleague;
+package com.example.gamersleague.ui;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -15,6 +15,8 @@ import android.widget.Toast;
 
 
 import androidx.fragment.app.DialogFragment;
+
+import com.example.gamersleague.R;
 
 public class ReviewsActivity extends DialogFragment{
 
