@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.ProgressBar;
 import android.widget.SearchView;
 import android.widget.TextView;
@@ -23,6 +24,7 @@ import com.example.gamersleague.models.GiantBombGamesResponse;
 import com.example.gamersleague.models.Result;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -92,6 +94,7 @@ public class GamesActivity extends AppCompatActivity {
 
         MenuItem searchItem = menu.findItem(R.id.action_search);
         SearchView searchView =(SearchView)searchItem.getActionView();
+        searchView.setImeOptions(EditorInfo.IME_ACTION_DONE);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener(){
 
             @Override
@@ -101,11 +104,24 @@ public class GamesActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                mAdapter.getFilter().filter(newText);
+                List<Result> foundGames = new ArrayList<>() ;
+
+                for (int i=0; i<games.size(); i++){
+                    if( games.get(i).getName().toLowerCase().contains(newText.toLowerCase().trim())){
+                        foundGames.add(games.get(i));
+                    }
+                }
+
+                mAdapter = new GamesListAdapter(GamesActivity.this, foundGames);
+                mRecyclerView.setAdapter(mAdapter);
+                RecyclerView.LayoutManager layoutManager =new LinearLayoutManager(GamesActivity.this);
+                mRecyclerView.setLayoutManager(layoutManager);
+                mRecyclerView.setHasFixedSize(true);
+                showGames();
                 return false;
             }
         });
-        return super.onCreateOptionsMenu(menu);
+        return true;
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -114,6 +130,24 @@ public class GamesActivity extends AppCompatActivity {
             logout();
             return true;
         }
+//        if(id == R.id.action_search){
+////            MenuItem searchItem = menu.findItem(id);
+//            SearchView searchView =(SearchView) item.getActionView();
+//            searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener(){
+//
+//                @Override
+//                public boolean onQueryTextSubmit(String query) {
+//                    mAdapter.getFilter().filter(query);
+//                    return false;
+//                }
+//
+//                @Override
+//                public boolean onQueryTextChange(String newText) {
+//                    mAdapter.getFilter().filter(newText);
+//                    return false;
+//                }
+//            });
+//        }
         return super.onOptionsItemSelected(item);
     }
     private void logout() {

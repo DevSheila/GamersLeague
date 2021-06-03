@@ -49,17 +49,7 @@
                 android:layout_alignParentEnd="true"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="favorites"
-                android:drawableLeft="@drawable/ic_turned_in_not"
-                android:id="@+id/favouritesTextView"
-                android:layout_below="@+id/ratingTextView"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
+
 
             <TextView
                 android:layout_width="wrap_content"
@@ -103,13 +93,27 @@
                     android:layout_marginBottom="10dp"
                     android:gravity="center" />
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="favorites"
+                    android:drawableLeft="@drawable/ic_turned_in_not"
+                    android:id="@+id/favouritesTextView"
+                    android:drawablePadding="4dp"
+                    android:layout_below="@+id/giantBombTextView"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:textColor="@color/colorTextIcons"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
 
             </LinearLayout>
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Save Game"
+                android:text="View Favourites"
                 android:id="@+id/saveGameButton"
                 android:layout_alignParentBottom="true"
                 android:background="@color/maroon"

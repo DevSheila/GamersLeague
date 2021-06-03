@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,6 +34,7 @@ import butterknife.ButterKnife;
 public class GameDetailFragment extends Fragment implements View.OnClickListener{
     @BindView(R.id.gameImageView)
     ImageView mImageLabel;
+
     @BindView(R.id.gameNameTextView)
     TextView mNameLabel;
     @BindView(R.id.descriptionTextView)
@@ -43,7 +46,7 @@ public class GameDetailFragment extends Fragment implements View.OnClickListener
     @BindView(R.id.giantBombTextView)
     TextView mGiantBomb;
     @BindView(R.id.saveGameButton)
-    TextView mSaveGameButton;
+    Button mSaveGameButton;
 
     private Result mResult;
 
@@ -78,6 +81,8 @@ public class GameDetailFragment extends Fragment implements View.OnClickListener
         mRatingLabel.setText(  "/5");
         mGiantBomb.setOnClickListener(this);
         mFavouritesLabel.setOnClickListener(this);
+        mSaveGameButton.setOnClickListener(this);
+
 
         return view;
     }
@@ -95,6 +100,11 @@ public class GameDetailFragment extends Fragment implements View.OnClickListener
                     .getReference(Constants.FIREBASE_CHILD_GAMES);
             gamesRef.push().setValue(mResult);
             Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
+        }
+        if (v == mSaveGameButton) {
+            Intent intent = new Intent(requireContext(), SavedGamesListActivity.class);
+
+            startActivity(intent);
         }
     }
 }

@@ -76,7 +76,7 @@ public class GamesListAdapter extends RecyclerView.Adapter<GamesListAdapter.Game
                String filterPattern = constraint.toString().toLowerCase().trim();
 
                for(Result item: mGamesFull){
-                   //intead of contains below,, you can use starts with & other methods
+                   //intead of "contains" below,, you can use starts with & other methods
                    //try filtering with other fields
                    if(item.getName().toLowerCase().contains(filterPattern)){
                        filteredList.add(item);
@@ -89,9 +89,9 @@ public class GamesListAdapter extends RecyclerView.Adapter<GamesListAdapter.Game
         }
 
         @Override
-        protected void publishResults(CharSequence constraint, FilterResults results) {
+        protected void publishResults(CharSequence constraint, FilterResults filterresults) {
             mGamesFull.clear();
-            mGamesFull.addAll((List)results.values);
+            mGamesFull.addAll((List) filterresults.values);
             notifyDataSetChanged();
 
         }

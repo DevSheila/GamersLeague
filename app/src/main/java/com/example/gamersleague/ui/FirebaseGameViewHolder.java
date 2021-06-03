@@ -44,7 +44,7 @@ public class FirebaseGameViewHolder  extends RecyclerView.ViewHolder implements 
 
         Picasso.get().load(mResult.getImage().getScreenUrl()).into(gameImageView);
         nameTextView.setText(mResult.getName());
-        descriptionTextView.setText(mResult.getDeck());
+//        descriptionTextView.setText(mResult.getDeck());
         ratingTextView.setText("Rating: " + mResult.getOriginalGameRating() + "/5");
     }
 
