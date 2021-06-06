@@ -19,7 +19,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class GamesDetailActivity extends AppCompatActivity {
+public class GamesDetailActivity extends AppCompatActivity implements ReviewsActivity.ExampleDialogListener{
     @BindView(R.id.viewPager)
     ViewPager mViewPager;
     private GamePageAdapter adapterViewPager;
@@ -39,6 +39,11 @@ public class GamesDetailActivity extends AppCompatActivity {
         adapterViewPager = new GamePageAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT, mResults);
         mViewPager.setAdapter(adapterViewPager);
         mViewPager.setCurrentItem(startingPosition);
+
+    }
+
+    @Override
+    public void applyText(String comment, String rating) {
 
     }
 }

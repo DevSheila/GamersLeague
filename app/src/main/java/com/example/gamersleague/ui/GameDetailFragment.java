@@ -15,10 +15,12 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.gamersleague.Constants;
 import com.example.gamersleague.R;
 import com.example.gamersleague.models.Result;
+import com.example.gamersleague.models.Reviews;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -26,6 +28,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
+import org.w3c.dom.Comment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,10 +36,9 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class GameDetailFragment extends Fragment implements View.OnClickListener{
+public class GameDetailFragment extends Fragment implements View.OnClickListener ,ReviewsActivity.ExampleDialogListener{
     @BindView(R.id.gameImageView)
     ImageView mImageLabel;
-
     @BindView(R.id.gameNameTextView)
     TextView mNameLabel;
     @BindView(R.id.descriptionTextView)
@@ -49,8 +51,16 @@ public class GameDetailFragment extends Fragment implements View.OnClickListener
     TextView mGiantBomb;
     @BindView(R.id.saveGameButton)
     Button mSaveGameButton;
+    @BindView(R.id.addCommentButton)
+    Button mAddCommentButton;
+    @BindView(R.id.recyclerView)
+    RecyclerView mRecyclerView;
+
 
     private Result mResult;
+    private Reviews mReview;
+    List<Reviews> allReviews;
+
 
     public GameDetailFragment(){
 
@@ -81,14 +91,22 @@ public class GameDetailFragment extends Fragment implements View.OnClickListener
         mNameLabel.setText(mResult.getName());
         mDescriptionLabel.setText(mResult.getDeck());
         mRatingLabel.setText(  "/5");
+
         mGiantBomb.setOnClickListener(this);
         mFavouritesLabel.setOnClickListener(this);
         mSaveGameButton.setOnClickListener(this);
+        mAddCommentButton.setOnClickListener(this);
+
 
 
         return view;
     }
 
+
+    public void openDialog(){
+
+
+    }
     @Override
     public void onClick(View v) {
         if (v == mGiantBomb) {
@@ -118,5 +136,14 @@ public class GameDetailFragment extends Fragment implements View.OnClickListener
 
             startActivity(intent);
         }
+        if (v == mAddCommentButton) {
+            ReviewsActivity exampleDialog = new ReviewsActivity();
+            exampleDialog.show(getFragmentManager(),"example dialog");
+        }
+    }
+
+    @Override
+    public void applyText(String comment, String rating) {
+
     }
 }

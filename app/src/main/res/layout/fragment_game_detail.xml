@@ -107,8 +107,32 @@
                     android:textSize="15sp"
                     android:textStyle="bold" />
 
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="+ Add Comment"
+                    android:id="@+id/addCommentButton"
+                    android:layout_alignParentBottom="true"
+                    android:layout_below="@+id/favouritesTextView"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/maroon"
+                    android:textColor="@color/colorTextIcons"
+                    android:textSize="15sp" />
 
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/addCommentButton"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+
+                    android:paddingHorizontal="10dp"
+                    android:layout_marginTop="20dp"
+
+                    />
             </LinearLayout>
+
 
             <Button
                 android:layout_width="match_parent"
