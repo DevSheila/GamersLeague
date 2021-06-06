@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.gamersleague.Constants;
 import com.example.gamersleague.R;
 import com.example.gamersleague.models.Result;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -41,17 +43,24 @@ public class FirebaseGameViewHolder  extends RecyclerView.ViewHolder implements 
         TextView nameTextView = (TextView) mView.findViewById(R.id.gameNameTextView);
         TextView descriptionTextView = (TextView) mView.findViewById(R.id.descriptionTextView);
         TextView ratingTextView = (TextView) mView.findViewById(R.id.ratingTextView);
+        TextView categoryTextView = (TextView) mView.findViewById(R.id.categoryTextView);
+        TextView platformsTextView = (TextView) mView.findViewById(R.id.platformNames);
+
 
         Picasso.get().load(mResult.getImage().getScreenUrl()).into(gameImageView);
         nameTextView.setText(mResult.getName());
-//        descriptionTextView.setText(mResult.getDeck());
-        ratingTextView.setText("Rating: " + mResult.getOriginalGameRating() + "/5");
+        categoryTextView.setText(mResult.getDateAdded());
+        for (int i= 0;i<mResult.getPlatforms().size();i++){
+            platformsTextView.append(mResult.getPlatforms().get(i).getName() + ",");
+        }
     }
 
     @Override
     public void onClick(View v) {
         final ArrayList<Result> games = new ArrayList<>();
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_GAMES);
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String uid = user.getUid();
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_GAMES).child(uid);
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
 
             @Override

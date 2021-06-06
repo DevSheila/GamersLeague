@@ -76,6 +76,7 @@ public class Result {
      * No args constructor for use in serialization
      * 
      */
+    private String pushId;
     public Result() {
     }
 
@@ -284,6 +285,13 @@ public class Result {
 
     public void setSiteDetailUrl(String siteDetailUrl) {
         this.siteDetailUrl = siteDetailUrl;
+    }
+    public String getPushId() {
+        return pushId;
+    }
+
+    public void setPushId(String pushId) {
+        this.pushId = pushId;
     }
 
 }

@@ -35,8 +35,15 @@ import retrofit2.Response;
 
 import static com.example.gamersleague.Constants.GIANT_BOMB_KEY;
 
-public class GamesActivity extends AppCompatActivity {
+public class GamesActivity extends AppCompatActivity implements View.OnClickListener {
+
     @BindView(R.id.usernameTextView)TextView mUsernameTextView;
+    @BindView(R.id.xbox)TextView mXboxTextView;
+    @BindView(R.id.pc)TextView mPcTextView;
+    @BindView(R.id.nintendo)TextView mNintendoTextView;
+    @BindView(R.id.playstation)TextView mPlayStationTextView;
+
+
     @BindView(R.id.recyclerView)RecyclerView mRecyclerView;
     @BindView(R.id.errorTextView) TextView mErrorTextView;
     @BindView(R.id.progressBar) ProgressBar mProgressBar;
@@ -56,6 +63,8 @@ public class GamesActivity extends AppCompatActivity {
         String username = intent.getStringExtra("username");
         mUsernameTextView.setText("Hello "+username+" .Welcome to Gamers League");
 
+
+
         GiantBombApi client = GiantBombClient.getClient();
         Call<GiantBombGamesResponse> call = client.getResults(GIANT_BOMB_KEY,"json");
 
@@ -71,6 +80,9 @@ public class GamesActivity extends AppCompatActivity {
                     RecyclerView.LayoutManager layoutManager =new LinearLayoutManager(GamesActivity.this);
                     mRecyclerView.setLayoutManager(layoutManager);
                     mRecyclerView.setHasFixedSize(true);
+
+
+
                     showGames();
                 }else{
                     showUnsuccessfulMessage();
@@ -85,6 +97,11 @@ public class GamesActivity extends AppCompatActivity {
 
             }
         });
+        mXboxTextView.setOnClickListener(this);
+        mNintendoTextView.setOnClickListener(this);
+        mPcTextView.setOnClickListener(this);
+        mPlayStationTextView.setOnClickListener(this);
+
     }
 
     @Override
@@ -106,11 +123,22 @@ public class GamesActivity extends AppCompatActivity {
             public boolean onQueryTextChange(String newText) {
                 List<Result> foundGames = new ArrayList<>() ;
 
+//                for (int i=0; i<games.size(); i++){
+//                    if( games.get(i).getName().toLowerCase().contains(newText.toLowerCase().trim())){
+//                        foundGames.add(games.get(i));
+//                    }
+//                }
+//                newText ="pc";
                 for (int i=0; i<games.size(); i++){
-                    if( games.get(i).getName().toLowerCase().contains(newText.toLowerCase().trim())){
-                        foundGames.add(games.get(i));
+                    for(int j=0;j<games.get(i).getPlatforms().size();j++){
+                        if( games.get(i).getPlatforms().get(j).getName().toLowerCase().contains(newText.toLowerCase().trim())){
+                            foundGames.add(games.get(i));
+                            break;
+                        }
                     }
+
                 }
+
 
                 mAdapter = new GamesListAdapter(GamesActivity.this, foundGames);
                 mRecyclerView.setAdapter(mAdapter);
@@ -130,24 +158,7 @@ public class GamesActivity extends AppCompatActivity {
             logout();
             return true;
         }
-//        if(id == R.id.action_search){
-////            MenuItem searchItem = menu.findItem(id);
-//            SearchView searchView =(SearchView) item.getActionView();
-//            searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener(){
-//
-//                @Override
-//                public boolean onQueryTextSubmit(String query) {
-//                    mAdapter.getFilter().filter(query);
-//                    return false;
-//                }
-//
-//                @Override
-//                public boolean onQueryTextChange(String newText) {
-//                    mAdapter.getFilter().filter(newText);
-//                    return false;
-//                }
-//            });
-//        }
+
         return super.onOptionsItemSelected(item);
     }
     private void logout() {
@@ -175,4 +186,51 @@ public class GamesActivity extends AppCompatActivity {
     private void hideProgressBar() {
         mProgressBar.setVisibility(View.GONE);
     }
-}
+    public void sortByPlatformName(String platformName) {
+        List<Result> foundGames = new ArrayList<>() ;
+
+        for (int i = 0; i < games.size(); i++) {
+            for (int j = 0; j < games.get(i).getPlatforms().size(); j++) {
+                if (games.get(i).getPlatforms().get(j).getName().toLowerCase().contains(platformName.toLowerCase().trim())) {
+                    foundGames.add(games.get(i));
+                    break;
+                }
+            }
+        }
+
+        mAdapter = new GamesListAdapter(GamesActivity.this, foundGames);
+        mRecyclerView.setAdapter(mAdapter);
+        RecyclerView.LayoutManager layoutManager =new LinearLayoutManager(GamesActivity.this);
+        mRecyclerView.setLayoutManager(layoutManager);
+        mRecyclerView.setHasFixedSize(true);
+        showGames();
+    }
+
+
+
+
+        @Override
+    public void onClick(View v) {
+        String pc= mPcTextView.getText().toString();
+        String nintendo= mNintendoTextView.getText().toString();
+        String ps= mPlayStationTextView.getText().toString();
+        String xbox= mXboxTextView.getText().toString();
+
+        if(v ==mPcTextView ){
+                sortByPlatformName(pc);
+        }
+        if(v ==mNintendoTextView) {
+          sortByPlatformName(nintendo);
+        }
+        if(v ==mXboxTextView) {
+           sortByPlatformName(xbox);
+        }
+        if(v ==mPlayStationTextView) {
+            sortByPlatformName(ps);
+        }
+
+
+    }
+
+    }
+

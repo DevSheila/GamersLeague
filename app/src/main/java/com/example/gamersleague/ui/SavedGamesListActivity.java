@@ -14,8 +14,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.gamersleague.Constants;
 import com.example.gamersleague.R;
-//import com.example.gamersleague.adapters.FirebaseRecyclerAdapter;
 import com.example.gamersleague.models.Result;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -30,6 +31,7 @@ import butterknife.ButterKnife;
 public class SavedGamesListActivity  extends AppCompatActivity {
     private DatabaseReference mGameReference;
     private FirebaseRecyclerAdapter<Result, FirebaseGameViewHolder> mFirebaseAdapter;
+    private FirebaseAuth mAuth;
 
     @BindView(R.id.recyclerView)RecyclerView mRecyclerView;
     @BindView(R.id.errorTextView)
@@ -43,21 +45,29 @@ public class SavedGamesListActivity  extends AppCompatActivity {
         setContentView(R.layout.activity_games);
         ButterKnife.bind(this);
 
-        mGameReference = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_GAMES);
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = mAuth.getCurrentUser();
+        String uid = user.getUid();
+        mGameReference = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_GAMES).child(uid);
+
         setUpFirebaseAdapter();
         hideProgressBar();
         showGames();
     }
 
     private void setUpFirebaseAdapter(){
+
+
         FirebaseRecyclerOptions<Result> options =
                 new FirebaseRecyclerOptions.Builder<Result>()
                         .setQuery(mGameReference, Result.class)
                         .build();
 
-        mFirebaseAdapter = new FirebaseRecyclerAdapter<Result, FirebaseGameViewHolder>(options) {
+
+        mFirebaseAdapter = new FirebaseRecyclerAdapter<Result, FirebaseGameViewHolder >(options) {
+
             @Override
-            protected void onBindViewHolder(@NonNull FirebaseGameViewHolder firebaseGameViewHolder, int position, @NonNull Result game) {
+            protected void onBindViewHolder(@NonNull FirebaseGameViewHolder firebaseGameViewHolder, int position,@NonNull Result game) {
                 firebaseGameViewHolder.bindGame(game);
             }
 

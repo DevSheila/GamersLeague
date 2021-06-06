@@ -63,8 +63,8 @@ public class GamesListAdapter extends RecyclerView.Adapter<GamesListAdapter.Game
         @BindView(R.id.gameImageView)ImageView mGameImageView;
         @BindView(R.id.gameNameTextView)TextView mNameTextView;
         @BindView(R.id.categoryTextView) TextView mCategoryTextView;
-        @BindView(R.id.ratingTextView) TextView mRatingTextView;
-
+//        @BindView(R.id.ratingTextView) TextView mRatingTextView;
+        @BindView(R.id.platformNames) TextView mPlatformsTextView;
 
         private Context mContext;
 
@@ -79,8 +79,12 @@ public class GamesListAdapter extends RecyclerView.Adapter<GamesListAdapter.Game
             Picasso.get().load(result.getImage().getOriginalUrl()).into(mGameImageView);
             mNameTextView.setText(result.getName());
             mCategoryTextView.setText(result.getDateAdded());
+            for (int i= 0;i<result.getPlatforms().size();i++){
+                mPlatformsTextView.append(result.getPlatforms().get(i).getName() + ",");
+            }
 
-            mRatingTextView.setText("Rating: " + result.getOriginalGameRating() + "/5");
+
+
         }
 
         @Override

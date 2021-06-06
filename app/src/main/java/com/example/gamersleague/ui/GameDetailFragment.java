@@ -19,6 +19,8 @@ import androidx.fragment.app.Fragment;
 import com.example.gamersleague.Constants;
 import com.example.gamersleague.R;
 import com.example.gamersleague.models.Result;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
@@ -95,11 +97,21 @@ public class GameDetailFragment extends Fragment implements View.OnClickListener
             startActivity(webIntent);
         }
         if(v == mFavouritesLabel){
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            String uid = user.getUid();
             DatabaseReference gamesRef = FirebaseDatabase
                     .getInstance()
-                    .getReference(Constants.FIREBASE_CHILD_GAMES);
-            gamesRef.push().setValue(mResult);
+                    .getReference(Constants.FIREBASE_CHILD_GAMES)
+                    .child(uid);
+
+            DatabaseReference pushRef = gamesRef.push();
+            String pushId = pushRef.getKey();
+            mResult.setPushId(pushId);
+            pushRef.setValue(mResult);
+
             Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
+//            gamesRef.push().setValue(mResult);
+//            Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
         }
         if (v == mSaveGameButton) {
             Intent intent = new Intent(requireContext(), SavedGamesListActivity.class);
