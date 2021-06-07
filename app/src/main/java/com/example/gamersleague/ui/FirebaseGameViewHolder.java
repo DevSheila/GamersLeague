@@ -42,7 +42,6 @@ public class FirebaseGameViewHolder  extends RecyclerView.ViewHolder implements 
         ImageView gameImageView = (ImageView) mView.findViewById(R.id.gameImageView);
         TextView nameTextView = (TextView) mView.findViewById(R.id.gameNameTextView);
         TextView descriptionTextView = (TextView) mView.findViewById(R.id.descriptionTextView);
-//        TextView ratingTextView = (TextView) mView.findViewById(R.id.ratingTextView);
         TextView categoryTextView = (TextView) mView.findViewById(R.id.categoryTextView);
         TextView platformsTextView = (TextView) mView.findViewById(R.id.platformNames);
 

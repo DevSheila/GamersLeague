@@ -49,7 +49,6 @@ public class FirebaseReviewViewHolder  extends RecyclerView.ViewHolder {
         TextView userNameTextView = (TextView) mView.findViewById(R.id.userName);
         TextView commentTextView = (TextView) mView.findViewById(R.id.userComment);
         TextView ratingTextView = (TextView) mView.findViewById(R.id.userRating);
-//
         userNameTextView.setText(review.getUserName());
         commentTextView.setText(review.getComment());
         ratingTextView.setText(review.getRating());

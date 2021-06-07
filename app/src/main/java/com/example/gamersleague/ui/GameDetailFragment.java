@@ -49,8 +49,6 @@ public class GameDetailFragment extends Fragment implements View.OnClickListener
     TextView mNameLabel;
     @BindView(R.id.descriptionTextView)
     TextView mDescriptionLabel;
-//    @BindView(R.id.ratingTextView)
-//    TextView mRatingLabel;
     @BindView(R.id.favouritesTextView)
     TextView mFavouritesLabel;
     @BindView(R.id.giantBombTextView)
@@ -68,12 +66,8 @@ public class GameDetailFragment extends Fragment implements View.OnClickListener
     private FirebaseAuth mAuth;
     private Result mResult;
     private ReviewsListAdapter adapterReviews;
-
-
     private Reviews mReview;
     List<Reviews> mListReviews = new ArrayList<>();
-
-
 
     public GameDetailFragment(){
 
@@ -137,24 +131,16 @@ public class GameDetailFragment extends Fragment implements View.OnClickListener
     @Override
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         View view = inflater.inflate(R.layout.fragment_game_detail, container, false);
         ButterKnife.bind(this, view);
-
 
         Picasso.get().load(mResult.getImage().getScreenUrl()).into(mImageLabel);
         mNameLabel.setText(mResult.getName());
         mDescriptionLabel.setText(mResult.getDeck());
-//        mRatingLabel.setText("/5");
-
-
-
         mGiantBomb.setOnClickListener(this);
         mFavouritesLabel.setOnClickListener(this);
         mSaveGameButton.setOnClickListener(this);
         mAddCommentButton.setOnClickListener(this);
-
-
     return view;
     }
 
