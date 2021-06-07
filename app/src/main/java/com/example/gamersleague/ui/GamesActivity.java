@@ -16,6 +16,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
 import com.example.gamersleague.adapters.GamesListAdapter;
 import com.example.gamersleague.network.GiantBombApi;
 import com.example.gamersleague.network.GiantBombClient;
@@ -56,7 +58,10 @@ public class GamesActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_games);
         ButterKnife.bind(this);
 
-
+        YoYo.with(Techniques.Landing)
+                .duration(700)
+                .repeat(1)
+                .playOn(mUsernameTextView);
 
 
         Intent intent = getIntent();
@@ -182,6 +187,7 @@ public class GamesActivity extends AppCompatActivity implements View.OnClickList
             for (int j = 0; j < games.get(i).getPlatforms().size(); j++) {
                 if (games.get(i).getPlatforms().get(j).getName().toLowerCase().contains(platformName.toLowerCase().trim())) {
                     foundGames.add(games.get(i));
+
                     break;
                 }
             }
@@ -206,19 +212,31 @@ public class GamesActivity extends AppCompatActivity implements View.OnClickList
         String xbox= mXboxTextView.getText().toString();
 
         if(v ==mPcTextView ){
+            animate(mPcTextView);
                 sortByPlatformName(pc);
         }
         if(v ==mNintendoTextView) {
+            animate(mNintendoTextView);
           sortByPlatformName(nintendo);
         }
         if(v ==mXboxTextView) {
-           sortByPlatformName(xbox);
+            animate(mXboxTextView);
+            sortByPlatformName(xbox);
         }
         if(v ==mPlayStationTextView) {
+            animate(mPlayStationTextView);
+
             sortByPlatformName(ps);
         }
 
 
+    }
+
+    public void animate(View v){
+        YoYo.with(Techniques.RubberBand)
+                .duration(700)
+                .repeat(1)
+                .playOn(v);
     }
 
     }
