@@ -32,15 +32,10 @@ public class ReviewsListAdapter extends RecyclerView.Adapter<ReviewsListAdapter.
     private List<Reviews> mReviews;
     private Context mContext;
 
-
-
-
     public ReviewsListAdapter(Context context, List<Reviews> reviews) {
         mContext = context;
         mReviews = reviews;
     }
-
-
 
     @NonNull
     @Override
@@ -60,8 +55,6 @@ public class ReviewsListAdapter extends RecyclerView.Adapter<ReviewsListAdapter.
         return mReviews.size();
     }
 
-
-
     public class ReviewsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         @BindView(R.id.userName)TextView mUsernameTextView;
         @BindView(R.id.userComment) TextView mCommentTextView;
@@ -80,9 +73,6 @@ public class ReviewsListAdapter extends RecyclerView.Adapter<ReviewsListAdapter.
            mUsernameTextView.setText(review.getUserName());
             mCommentTextView.setText(review.getComment());
             mRatingTextView.setText(review.getRating());
-
-
-
         }
 
         @Override

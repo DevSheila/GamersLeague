@@ -129,17 +129,6 @@ public class GamesActivity extends AppCompatActivity implements View.OnClickList
                     }
                 }
 
-//                for (int i=0; i<games.size(); i++){
-//                    for(int j=0;j<games.get(i).getPlatforms().size();j++){
-//                        if( games.get(i).getPlatforms().get(j).getName().toLowerCase().contains(newText.toLowerCase().trim())){
-//                            foundGames.add(games.get(i));
-//                            break;
-//                        }
-//                    }
-//
-//                }
-
-
                 mAdapter = new GamesListAdapter(GamesActivity.this, foundGames);
                 mRecyclerView.setAdapter(mAdapter);
                 RecyclerView.LayoutManager layoutManager =new LinearLayoutManager(GamesActivity.this);
