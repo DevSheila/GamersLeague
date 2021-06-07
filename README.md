@@ -31,6 +31,8 @@ If not , they get to know what they can work on.
 
  * He /she can also add his/her own review.
 
+ *User can also filter games by name and their platforms
+
 ## Technologies
 
 1. Android
