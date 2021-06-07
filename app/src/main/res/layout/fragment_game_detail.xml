@@ -41,7 +41,8 @@
                 android:textSize="20sp"
                 android:textColor="@color/black"
                 android:textStyle="bold"
-
+                android:ellipsize="end"
+                android:maxEms="10"
                 />
 
 
@@ -58,8 +59,7 @@
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 android:textStyle="bold"
-                android:ellipsize="end"
-                android:maxEms="10"
+
                 />
 
             <TextView

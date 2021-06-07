@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -33,11 +34,17 @@ public class SavedGamesListActivity  extends AppCompatActivity {
     private FirebaseRecyclerAdapter<Result, FirebaseGameViewHolder> mFirebaseAdapter;
     private FirebaseAuth mAuth;
 
+    @BindView(R.id.usernameTextView)TextView mUsernameTextView;
+    @BindView(R.id.linear3)
+    LinearLayout mFilterPlatforms;
+
     @BindView(R.id.recyclerView)RecyclerView mRecyclerView;
     @BindView(R.id.errorTextView)
     TextView mErrorTextView;
     @BindView(R.id.progressBar)
     ProgressBar mProgressBar;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +52,8 @@ public class SavedGamesListActivity  extends AppCompatActivity {
         setContentView(R.layout.activity_games);
         ButterKnife.bind(this);
 
+        mUsernameTextView.setText("Favourites");
+        mFilterPlatforms.setVisibility(View.GONE);
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
         String uid = user.getUid();

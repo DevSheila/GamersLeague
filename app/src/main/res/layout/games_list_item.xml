@@ -43,7 +43,11 @@
                android:text="Game Name"
                android:textColor="@color/black"
                android:textSize="20dp"
-               android:textStyle="bold" />
+               android:textStyle="bold"
+               android:maxLines="1"
+               android:maxLength="10"
+               android:ellipsize="end"
+               />
 
            <TextView
                android:id="@+id/categoryTextView"
