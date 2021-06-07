@@ -64,7 +64,6 @@ public class FirebaseReviewViewHolder  extends RecyclerView.ViewHolder {
             int itemPosition = getLayoutPosition();
 
             DatabaseReference ref = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_REVIEWS);
-//                .child(mListResults.get(itemPosition).getId().toString());
             ref.addListenerForSingleValueEvent(new ValueEventListener() {
 
 
@@ -74,32 +73,15 @@ public class FirebaseReviewViewHolder  extends RecyclerView.ViewHolder {
                         reviews.add(snapshot.getValue(Reviews.class));
 
                         for (int i = 0; i < reviews.size(); i++) {
-//                     userNameTextView.setText(reviews.get(i).getUserName());
-//                    commentTextView.setText(reviews.get(i).getComment());
-//                    ratingTextView.setText(reviews.get(i).getRating());
+
                             Log.i("reviews", reviews.get(i).toString());
 
                         }
                         Log.i("reviews", reviews.get(0).toString());
 
 
-//                    Reviews review = dataSnapshot.getValue(Reviews.class);
-//
-//                    userNameTextView.setText(review.getUserName());
-//                    commentTextView.setText(review.getComment());
-//                    ratingTextView.setText(review.getRating());
 
                     }
-
-//                Reviews review = dataSnapshot.getValue(Reviews.class);
-
-//                Intent intent = new Intent(mContext, GamesDetailActivity.class);
-//                intent.putExtra("position", itemPosition + "");
-//                intent.putExtra("reviews", Parcels.wrap(reviews));
-//                mContext.startActivity(intent);
-
-
-
                 }
 
                 @Override

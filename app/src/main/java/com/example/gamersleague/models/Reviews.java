@@ -4,10 +4,8 @@ public class Reviews {
 
     private String comment;
     private String rating;
-//    private String pushId;//gameId
     private String userId;
     private String userName;
-
     public Reviews() {
 
     }
@@ -35,13 +33,6 @@ public class Reviews {
         this.rating = rating;
     }
 
-//    public String getPushId() {
-//        return pushId;
-//    }
-//
-//    public void setPushId(String pushId) {
-//        this.pushId = pushId;
-//    }
 
     public String getUserId() {
         return userId;

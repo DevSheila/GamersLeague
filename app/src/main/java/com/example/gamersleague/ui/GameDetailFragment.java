@@ -62,12 +62,6 @@ public class GameDetailFragment extends Fragment implements View.OnClickListener
 
     @BindView(R.id.recyclerView)
     RecyclerView mRecyclerView;
-//    @BindView(R.id.userName)
-//    TextView mUserName;
-//    @BindView(R.id.userRating)
-//    TextView mUserRating;
-//    @BindView(R.id.userComment)
-//    TextView mUserComment;
 
     private DatabaseReference mReviewReference;
     private FirebaseRecyclerAdapter<Reviews, FirebaseReviewViewHolder> mFirebaseAdapter;
@@ -104,7 +98,6 @@ public class GameDetailFragment extends Fragment implements View.OnClickListener
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
         String uid = user.getUid();
-//        mReviewReference = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_REVIEWS).child(mResult.getId().toString());
 
 
         final ArrayList<Reviews> reviews = new ArrayList<>();
@@ -116,8 +109,6 @@ public class GameDetailFragment extends Fragment implements View.OnClickListener
 
         Log.i("game position",gamePosition.toString());
         ref.child(pushId);
-//        mResult.setPushId(pushId);
-//        pushRef.setValue(mResult);
 
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
 
@@ -128,26 +119,17 @@ public class GameDetailFragment extends Fragment implements View.OnClickListener
                     mListReviews.add(snapshot.getValue(Reviews.class));
 
                     for (int i = 0; i < mListReviews.size(); i++) {
-//                     userNameTextView.setText(reviews.get(i).getUserName());
-//                    commentTextView.setText(reviews.get(i).getComment());
-//                    ratingTextView.setText(reviews.get(i).getRating());
+
                         Log.i("reviews", mListReviews.get(i).toString());
-
-
                     }
                     Log.i("reviews", mListReviews.get(0).toString());
                     adapterReviews = new ReviewsListAdapter(getContext(),mListReviews);
                     mRecyclerView.setAdapter(adapterReviews);
-
-
                 }
-
-
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
                 Log.i("database", "The read failed: " + error.getCode());
             }
         });
@@ -219,53 +201,15 @@ public class GameDetailFragment extends Fragment implements View.OnClickListener
         String uid = user.getUid();
         String username = user.getDisplayName();
 
-//        mReview.setUserId(uid);
-//        mReview.setUserName(username);
-//        mReview.setComment(comment);
-//        mReview.setRating(rating);
-
-
         mReview=new Reviews(comment,rating,uid,username);
         mListReviews.add(mReview);
 
         DatabaseReference reviewsRef = FirebaseDatabase
                 .getInstance()
                 .getReference(Constants.FIREBASE_REVIEWS);
-//                .child(mResult.getId().toString());
-//                .child(uid);
+
         reviewsRef.push().setValue(mReview);
-//        adapterReviews = new ReviewsListAdapter(getContext(), mListReviews);
-//        mRecyclerView.setAdapter(adapterReviews);
-//        DatabaseReference pushRef = reviewsRef.push();
-//        String pushId = pushRef.getKey();
-//        mReview.setPushId(pushId);
-//        pushRef.setValue(mReview);
 
         Toast.makeText(getContext(), "Comment Added", Toast.LENGTH_SHORT).show();
-
-//        int n = comments.length;
-//
-//        String newCommentsArr[] = new String[n+ 1];
-//        String newRatingsArr[] = new String[n+ 1];
-//
-//
-//        for (int i=0;i< n; i++){
-//            newCommentsArr[i] = comments[i];
-//            newCommentsArr[n] = comment;
-//
-//            newRatingsArr[i] = ratings[i];
-//            newRatingsArr[n] = rating;
-//
-//        }
-//        comments = newCommentsArr;
-//        ratings = newRatingsArr;
-//
-//        Log.i("newcomment",newCommentsArr[n]);
-//        Log.i("newrating",newRatingsArr[n]);
-//
-//        ReviewArrayAdapter reviewAdapter = new ReviewArrayAdapter(GameActivity.this, android.R.layout.simple_list_item_1,comments,ratings);
-//        mReviewsListView.setAdapter(reviewAdapter);
-//
-//        Toast.makeText(GameActivity.this, "comment added", Toast.LENGTH_LONG).show();
     }
 }
