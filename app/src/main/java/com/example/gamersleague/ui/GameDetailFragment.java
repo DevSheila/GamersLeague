@@ -49,14 +49,14 @@ public class GameDetailFragment extends Fragment implements View.OnClickListener
     TextView mNameLabel;
     @BindView(R.id.descriptionTextView)
     TextView mDescriptionLabel;
-    @BindView(R.id.ratingTextView)
-    TextView mRatingLabel;
+//    @BindView(R.id.ratingTextView)
+//    TextView mRatingLabel;
     @BindView(R.id.favouritesTextView)
     TextView mFavouritesLabel;
     @BindView(R.id.giantBombTextView)
     TextView mGiantBomb;
-    @BindView(R.id.saveGameButton)
-    Button mSaveGameButton;
+    @BindView(R.id.viewFavTextView)
+    TextView mSaveGameButton;
     @BindView(R.id.addCommentButton)
     Button mAddCommentButton;
 
@@ -70,7 +70,6 @@ public class GameDetailFragment extends Fragment implements View.OnClickListener
     private ReviewsListAdapter adapterReviews;
 
 
-//    private Result mResult;
     private Reviews mReview;
     List<Reviews> mListReviews = new ArrayList<>();
 
@@ -146,7 +145,7 @@ public class GameDetailFragment extends Fragment implements View.OnClickListener
         Picasso.get().load(mResult.getImage().getScreenUrl()).into(mImageLabel);
         mNameLabel.setText(mResult.getName());
         mDescriptionLabel.setText(mResult.getDeck());
-        mRatingLabel.setText("/5");
+//        mRatingLabel.setText("/5");
 
 
 

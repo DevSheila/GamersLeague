@@ -12,7 +12,8 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/maroon">
+        android:background="@color/white"
+        >
 
         <ImageView
             android:layout_width="match_parent"
@@ -24,7 +25,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/white"
+            android:background="#EFEDED"
             android:paddingTop="20dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
@@ -38,53 +39,50 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:textSize="20sp"
-                android:textColor="@color/maroon"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="4.5/5"
-                android:drawableLeft="@drawable/ic_star_rate"
-                android:id="@+id/ratingTextView"
-                android:layout_alignTop="@+id/gameNameTextView"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
 
 
             <TextView
+                android:id="@+id/favouritesTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
+                android:layout_alignTop="@+id/gameNameTextView"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:drawableLeft="@drawable/ic_turned_in_not"
+                android:drawablePadding="4dp"
+                android:text=" Add favorites"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                />
+
+            <TextView
                 android:id="@+id/descriptionTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/gameNameTextView"
-                android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:text=""
                 android:textColor="@color/colorDivider"
                 android:textStyle="italic" />
+
+
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <Button
-                android:id="@+id/saveGameButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/maroon"
-                android:text="View Favourites"
-                android:textColor="@color/colorTextIcons"
-                android:textSize="15sp" />
 
             <LinearLayout
                 android:id="@+id/linear6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/saveGameButton"
-                android:orientation="vertical"
+
+                android:orientation="horizontal"
                 android:paddingLeft="30dp"
                 android:paddingTop="20dp"
                 android:paddingRight="30dp">
@@ -100,44 +98,57 @@
                     android:drawablePadding="4dp"
                     android:gravity="center"
                     android:text="View on Giant Bomb"
-                    android:textColor="@color/colorTextIcons"
+                    android:textColor="@color/black"
                     android:textSize="15sp"
                     android:textStyle="bold" />
+
 
                 <TextView
-                    android:id="@+id/favouritesTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/giantBombTextView"
-                    android:layout_alignParentEnd="true"
+                    android:text="View Favourites"
+                    android:drawableLeft="@drawable/ic_star_rate"
+                    android:id="@+id/viewFavTextView"
                     android:layout_alignParentRight="true"
-                    android:drawableLeft="@drawable/ic_turned_in_not"
-                    android:drawablePadding="4dp"
-                    android:text="favorites"
-                    android:textColor="@color/colorTextIcons"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
+                    android:layout_alignParentEnd="true"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="10dp"/>
 
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/linear7"
+
+                android:layout_width="match_parent"
+                android:background="@color/white"
+
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="30dp"
+                android:paddingTop="20dp"
+                android:paddingRight="30dp"
+                android:layout_below="@+id/linear6"
+                android:layout_marginTop="2dp"
+
+
+                >
                 <Button
                     android:id="@+id/addCommentButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/favouritesTextView"
                     android:layout_alignParentBottom="true"
-                    android:layout_marginTop="20dp"
-                    android:background="@color/maroon"
+                    android:background="@color/black"
                     android:text="+ Add Comment"
-                    android:textColor="@color/colorTextIcons"
+                    android:textColor="@color/white"
                     android:textSize="15sp" />
-
-
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/linear6"
+                android:layout_below="@+id/linear7"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"

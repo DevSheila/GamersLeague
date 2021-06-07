@@ -16,7 +16,7 @@
         android:layout_below="@+id/linear6"
         android:layout_marginHorizontal="20dp"
         android:layout_marginVertical="20dp"
-        android:background="#ffffff"
+        android:background="#EFEDED"
         android:orientation="vertical"
         android:paddingHorizontal="20dp"
         android:paddingVertical="20dp"
