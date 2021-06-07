@@ -123,21 +123,21 @@ public class GamesActivity extends AppCompatActivity implements View.OnClickList
             public boolean onQueryTextChange(String newText) {
                 List<Result> foundGames = new ArrayList<>() ;
 
-//                for (int i=0; i<games.size(); i++){
-//                    if( games.get(i).getName().toLowerCase().contains(newText.toLowerCase().trim())){
-//                        foundGames.add(games.get(i));
-//                    }
-//                }
-//                newText ="pc";
                 for (int i=0; i<games.size(); i++){
-                    for(int j=0;j<games.get(i).getPlatforms().size();j++){
-                        if( games.get(i).getPlatforms().get(j).getName().toLowerCase().contains(newText.toLowerCase().trim())){
-                            foundGames.add(games.get(i));
-                            break;
-                        }
+                    if( games.get(i).getName().toLowerCase().contains(newText.toLowerCase().trim())){
+                        foundGames.add(games.get(i));
                     }
-
                 }
+
+//                for (int i=0; i<games.size(); i++){
+//                    for(int j=0;j<games.get(i).getPlatforms().size();j++){
+//                        if( games.get(i).getPlatforms().get(j).getName().toLowerCase().contains(newText.toLowerCase().trim())){
+//                            foundGames.add(games.get(i));
+//                            break;
+//                        }
+//                    }
+//
+//                }
 
 
                 mAdapter = new GamesListAdapter(GamesActivity.this, foundGames);

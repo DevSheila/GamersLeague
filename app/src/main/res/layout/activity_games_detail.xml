@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.GamesDetailActivity">
 
    <androidx.viewpager.widget.ViewPager
@@ -19,6 +19,32 @@
         android:layout_height="wrap_content"
         android:paddingBottom="4dp"
         android:paddingTop="4dp" />
+       <androidx.recyclerview.widget.RecyclerView
+           android:id="@+id/recyclerView"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_below="@+id/linear6"
+           android:layout_alignParentStart="true"
+           android:layout_alignParentLeft="true"
+           app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+
+           android:layout_alignParentEnd="true"
+           android:layout_alignParentRight="true"
+           tools:listitem="@layout/reviews_list_item"
+
+           android:layout_alignParentBottom="true"
+           android:layout_marginStart="0dp"
+           android:layout_marginLeft="0dp"
+           android:layout_marginTop="10dp"
+           android:layout_marginBottom="0dp"
+           android:paddingHorizontal="10dp">
+
+
+       </androidx.recyclerview.widget.RecyclerView>
+
+
    </androidx.viewpager.widget.ViewPager>
+
+
 
 </RelativeLayout>

@@ -3,9 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.GameDetailFragment">
 
     <LinearLayout
+        android:id="@+id/linear5"
+
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -67,82 +70,99 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <LinearLayout
-                android:orientation="vertical"
+            <Button
+                android:id="@+id/saveGameButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_above="@+id/saveGameButton"
+                android:background="@color/maroon"
+                android:text="View Favourites"
+                android:textColor="@color/colorTextIcons"
+                android:textSize="15sp" />
+
+            <LinearLayout
+                android:id="@+id/linear6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/saveGameButton"
+                android:orientation="vertical"
                 android:paddingLeft="30dp"
                 android:paddingTop="20dp"
                 android:paddingRight="30dp">
 
                 <TextView
 
+                    android:id="@+id/giantBombTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="View on Giant Bomb"
-                    android:id="@+id/giantBombTextView"
+                    android:layout_below="@+id/saveGameButton"
+                    android:layout_marginBottom="10dp"
                     android:drawableLeft="@drawable/ic_exit_to_app"
                     android:drawablePadding="4dp"
+                    android:gravity="center"
+                    android:text="View on Giant Bomb"
                     android:textColor="@color/colorTextIcons"
                     android:textSize="15sp"
-                    android:textStyle="bold"
-                    android:layout_marginBottom="10dp"
-                    android:gravity="center" />
+                    android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/favouritesTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="favorites"
-                    android:drawableLeft="@drawable/ic_turned_in_not"
-                    android:id="@+id/favouritesTextView"
-                    android:drawablePadding="4dp"
                     android:layout_below="@+id/giantBombTextView"
-                    android:layout_alignParentRight="true"
                     android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:drawableLeft="@drawable/ic_turned_in_not"
+                    android:drawablePadding="4dp"
+                    android:text="favorites"
                     android:textColor="@color/colorTextIcons"
                     android:textSize="15sp"
                     android:textStyle="bold" />
 
                 <Button
+                    android:id="@+id/addCommentButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="+ Add Comment"
-                    android:id="@+id/addCommentButton"
-                    android:layout_alignParentBottom="true"
                     android:layout_below="@+id/favouritesTextView"
+                    android:layout_alignParentBottom="true"
                     android:layout_marginTop="20dp"
                     android:background="@color/maroon"
+                    android:text="+ Add Comment"
                     android:textColor="@color/colorTextIcons"
                     android:textSize="15sp" />
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/addCommentButton"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
 
-                    android:paddingHorizontal="10dp"
-                    android:layout_marginTop="20dp"
-
-                    />
             </LinearLayout>
 
-
-            <Button
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="View Favourites"
-                android:id="@+id/saveGameButton"
+                android:layout_below="@+id/linear6"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                tools:listitem="@layout/reviews_list_item"
+
                 android:layout_alignParentBottom="true"
-                android:background="@color/maroon"
-                android:textColor="@color/colorTextIcons"
-                android:textSize="15sp" />
+                android:layout_marginStart="0dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="0dp"
+                android:paddingHorizontal="10dp">
+
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+
         </RelativeLayout>
+
+
     </LinearLayout>
+
+
+
+
 </FrameLayout>
