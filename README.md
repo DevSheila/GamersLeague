@@ -1,6 +1,8 @@
 # Gamers League
 ### Author- Sheila Sharon Wambui Karani
 
+Latest Branch  -> Final
+
 ## Description
 Gamers League is a crowd-sourced video game ratings and review application.It aims to help gamers to easily find and explore games that they would really love.
 
