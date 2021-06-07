@@ -69,10 +69,18 @@ public class LoginActivity extends  AppCompatActivity implements View.OnClickLis
         mRegisterTextView.setOnClickListener(this);
     }
 
+    public void openActivity2(View view){
+        Intent intent = new Intent(this,GamesActivity.class);
+        startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+    }
+
     @Override
     public void onClick(View view){
         if (view == mRegisterTextView) {
             Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
+            overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+
             startActivity(intent);
             finish();
         }

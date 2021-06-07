@@ -34,6 +34,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
 import org.parceler.Parcels;
 
 import java.util.ArrayList;
@@ -153,6 +155,13 @@ public class GameDetailFragment extends Fragment implements View.OnClickListener
             startActivity(webIntent);
         }
         if(v == mFavouritesLabel){
+
+
+                YoYo.with(Techniques.Tada)
+                        .duration(700)
+                        .repeat(1)
+                        .playOn(mAddCommentButton);
+
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             String uid = user.getUid();
             DatabaseReference gamesRef = FirebaseDatabase
