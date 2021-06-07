@@ -151,14 +151,7 @@ public class GameDetailFragment extends Fragment implements View.OnClickListener
                 Log.i("database", "The read failed: " + error.getCode());
             }
         });
-//        Reviews review1 = new Reviews("sdhsdd" ,"1","hjh","jj");
-//        Reviews review2 = new Reviews("kabby burkets" ,"2","hjh","jj");
-//
-//        mListReviews.add(review1);
-//        mListReviews.add(review2);
-//
-//        adapterReviews = new ReviewsListAdapter(getContext(), mListReviews);
-//        mRecyclerView.setAdapter(adapterReviews);
+
     }
     @Override
 
@@ -174,9 +167,6 @@ public class GameDetailFragment extends Fragment implements View.OnClickListener
         mRatingLabel.setText("/5");
 
 
-//        mUserName.setText(mReview.getUserName());
-//        mUserComment.setText(mReview.getComment());
-//        mUserRating.setText(mReview.getRating());
 
         mGiantBomb.setOnClickListener(this);
         mFavouritesLabel.setOnClickListener(this);
@@ -187,29 +177,6 @@ public class GameDetailFragment extends Fragment implements View.OnClickListener
     return view;
     }
 
-
-
-
-
-
-
-
-
-
-//    @Override
-//    public void onStart() {
-//        super.onStart();
-//        mFirebaseAdapter.startListening();
-//    }
-//
-//    @Override
-//    public void onStop() {
-//        super.onStop();
-//        if(mFirebaseAdapter!= null) {
-//            mFirebaseAdapter.stopListening();
-//        }
-//    }
-//
 
     @Override
     public void onClick(View v) {
@@ -232,8 +199,7 @@ public class GameDetailFragment extends Fragment implements View.OnClickListener
             pushRef.setValue(mResult);
 
             Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
-//            gamesRef.push().setValue(mResult);
-//            Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
+
         }
         if (v == mSaveGameButton) {
             Intent intent = new Intent(requireContext(), SavedGamesListActivity.class);

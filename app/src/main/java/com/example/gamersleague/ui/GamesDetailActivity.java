@@ -1,6 +1,7 @@
 package com.example.gamersleague.ui;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -66,21 +67,17 @@ public class GamesDetailActivity extends AppCompatActivity implements ReviewsAct
         int startingPosition = getIntent().getIntExtra("position",0);
 
         mReview=new Reviews(comment,rating,uid,username);
-//        mListReviews.add(mReview);
+
 
         DatabaseReference reviewsRef = FirebaseDatabase
                 .getInstance()
                 .getReference(Constants.FIREBASE_REVIEWS)
                 .child(mResults.get(startingPosition).getId().toString());
-//                .child(uid);
         reviewsRef.push().setValue(mReview);
-//        adapterReviews = new ReviewsListAdapter(getContext(), mListReviews);
-//        mRecyclerView.setAdapter(adapterReviews);
-//        DatabaseReference pushRef = reviewsRef.push();
-//        String pushId = pushRef.getKey();
-//        mReview.setPushId(pushId);
-//        pushRef.setValue(mReview);
 
+        Intent intent = getIntent();
+        finish();
+        startActivity(intent);
         Toast.makeText(GamesDetailActivity.this, "Comment Added", Toast.LENGTH_SHORT).show();
     }
 

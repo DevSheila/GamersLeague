@@ -2,72 +2,67 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.gamersleague">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.GamersLeague"
-       >
-        <activity android:name="com.example.gamersleague.ui.MainActivity" android:theme="@style/Theme.GamersLeague" >
+        android:theme="@style/Theme.GamersLeague">
+        <activity android:name=".ui.ProfileActivity"></activity>
+        <activity
+            android:name=".ui.MainActivity"
+            android:theme="@style/Theme.GamersLeague">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.gamersleague.ui.GameActivity" >
-            </meta-data>
+                android:value="com.example.gamersleague.ui.GameActivity"></meta-data>
         </activity>
         <activity
-            android:name="com.example.gamersleague.ui.GameActivity"
-            android:theme="@style/Theme.GamersLeague" >
+            android:name=".ui.GameActivity"
+            android:theme="@style/Theme.GamersLeague">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.gamersleague.ui.GameActivity" >
-            </meta-data>
+                android:value="com.example.gamersleague.ui.GameActivity"></meta-data>
         </activity>
         <activity
-            android:name="com.example.gamersleague.ui.GamesActivity"
-            android:theme="@style/Theme.GamersLeague" >
+            android:name=".ui.GamesActivity"
+            android:theme="@style/Theme.GamersLeague">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.gamersleague.ui.GamesActivity" >
-            </meta-data>
+                android:value="com.example.gamersleague.ui.GamesActivity"></meta-data>
+        </activity>
+        <activity
+            android:name=".ui.GamesDetailActivity"
+            android:theme="@style/Theme.GamersLeague">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.gamersleague.ui.GamesDetailActivity"></meta-data>
+        </activity>
+        <activity
+            android:name=".ui.ReviewsActivity"
+            android:theme="@style/Theme.GamersLeague">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.gamersleague.ui.ReviewsActivity"></meta-data>
+        </activity>
+        <activity
+            android:name=".ui.SignUpActivity"
+            android:theme="@style/Theme.GamersLeague">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.gamersleague.ui.SignUpActivity"></meta-data>
         </activity>
 
-        <activity
-            android:name="com.example.gamersleague.ui.GamesDetailActivity"
-            android:theme="@style/Theme.GamersLeague" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.gamersleague.ui.GamesDetailActivity" >
-            </meta-data>
-        </activity>
-        <activity
-            android:name="com.example.gamersleague.ui.ReviewsActivity"
-            android:theme="@style/Theme.GamersLeague" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.gamersleague.ui.ReviewsActivity" >
-            </meta-data>
-        </activity>
-        <activity
-            android:name="com.example.gamersleague.ui.SignUpActivity"
-            android:theme="@style/Theme.GamersLeague" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.gamersleague.ui.SignUpActivity" >
-            </meta-data>
-        </activity>
         <activity android:name=".ui.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.SavedGamesListActivity">
-
-        </activity>
-
+        <activity android:name=".ui.SavedGamesListActivity"></activity>
         <provider
             android:name="com.squareup.picasso.PicassoProvider"
             android:authorities="com.example.gamersleague.com.squareup.picasso"
