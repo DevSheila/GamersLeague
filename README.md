@@ -1,5 +1,5 @@
 # Gamers League
-### Author- Sheila Sharon Wambui Karani.
+### Author- Sheila Sharon Wambui Karani
 
 ## Description
 Gamers League is a crowd-sourced video game ratings and review application.It aims to help gamers to easily find and explore games that they would really love.
@@ -27,7 +27,7 @@ If not , they get to know what they can work on.
 
  * If he/she sees a game that interests him/her and clicks on it ,user is redirected to a page that display details and reviews(comments and ratings) of the selected game.
 
-* User  can then view the game's details , commens and ratings.
+* User  can then view the game's details , comments  and ratings.
 
  * He /she can also add his/her own review.
 
