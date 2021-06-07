@@ -57,7 +57,7 @@ public class ReviewsActivity extends DialogFragment{
                     Log.i("value",selectedId +"");
 
                 }else if(comment.isEmpty() && selectedId == -1) {
-                    Toast.makeText(getContext(), "Please Enter A Comment", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), "Please Leave A Review", Toast.LENGTH_LONG).show();
 
                 }else{
 

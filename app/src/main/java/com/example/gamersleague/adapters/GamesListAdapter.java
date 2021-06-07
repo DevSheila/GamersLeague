@@ -26,17 +26,15 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class GamesListAdapter extends RecyclerView.Adapter<GamesListAdapter.GamesViewHolder> implements Filterable {
+public class GamesListAdapter extends RecyclerView.Adapter<GamesListAdapter.GamesViewHolder>{
 
     private List<Result> mGames;
     private Context mContext;
 
-    private List<Result> mGamesFull;
 
     public GamesListAdapter(Context context, List<Result> games) {
         mContext = context;
         mGames = games;
-        mGames=new ArrayList<>(games);
     }
 
 
@@ -59,50 +57,14 @@ public class GamesListAdapter extends RecyclerView.Adapter<GamesListAdapter.Game
         return mGames.size();
     }
 
-    @Override
-    public Filter getFilter() {
-        return exampleFilter;
-    }
 
-    private  Filter exampleFilter = new Filter(){
-
-        @Override
-        protected FilterResults performFiltering(CharSequence constraint) {
-           List<Result> filteredList = new ArrayList<>();
-
-           if(constraint == null || constraint.length()==0){
-               filteredList.addAll(mGamesFull);
-           }else{
-               String filterPattern = constraint.toString().toLowerCase().trim();
-
-               for(Result item: mGamesFull){
-                   //intead of contains below,, you can use starts with & other methods
-                   //try filtering with other fields
-                   if(item.getName().toLowerCase().contains(filterPattern)){
-                       filteredList.add(item);
-                   }
-               }
-           }
-            FilterResults results = new FilterResults();
-            results.values= filteredList;
-            return results;
-        }
-
-        @Override
-        protected void publishResults(CharSequence constraint, FilterResults results) {
-            mGamesFull.clear();
-            mGamesFull.addAll((List)results.values);
-            notifyDataSetChanged();
-
-        }
-    };
 
     public class GamesViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         @BindView(R.id.gameImageView)ImageView mGameImageView;
         @BindView(R.id.gameNameTextView)TextView mNameTextView;
         @BindView(R.id.categoryTextView) TextView mCategoryTextView;
-        @BindView(R.id.ratingTextView) TextView mRatingTextView;
-
+//        @BindView(R.id.ratingTextView) TextView mRatingTextView;
+        @BindView(R.id.platformNames) TextView mPlatformsTextView;
 
         private Context mContext;
 
@@ -117,8 +79,12 @@ public class GamesListAdapter extends RecyclerView.Adapter<GamesListAdapter.Game
             Picasso.get().load(result.getImage().getOriginalUrl()).into(mGameImageView);
             mNameTextView.setText(result.getName());
             mCategoryTextView.setText(result.getDateAdded());
+            for (int i= 0;i<result.getPlatforms().size();i++){
+                mPlatformsTextView.append(result.getPlatforms().get(i).getName() + ",");
+            }
 
-            mRatingTextView.setText("Rating: " + result.getOriginalGameRating() + "/5");
+
+
         }
 
         @Override
