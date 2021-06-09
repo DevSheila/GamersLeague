@@ -36,10 +36,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
-//    @BindView(R.id.submitUsernameButton)
-//    Button mUsernameButton;
-//    @BindView(R.id.usernameEditText)
-//    EditText mUsernameEditText;
+
 
     @BindView(R.id.createUserButton)
     Button mCreateUserButton;
@@ -135,20 +132,6 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     }
 
 
-//    @Override
-//    public void onStart() {
-//        super.onStart();
-//        mAuth.addAuthStateListener(mAuthListener);
-//    }
-//
-//    @Override
-//    public void onStop() {
-//        super.onStop();
-//        if (mAuthListener != null) {
-//            mAuth.removeAuthStateListener(mAuthListener);
-//        }
-//    }
-
     private boolean isValidEmail(String email) {
         boolean isGoodEmail = (email != null && Patterns.EMAIL_ADDRESS.matcher(email).matches());
         if (!isGoodEmail) {
@@ -199,7 +182,6 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                     public void onComplete(@NonNull Task<Void> task) {
                         hideProgressBar();
                         if (task.isSuccessful()) {
-//                            Log.d(TAG, user.getDisplayName());
                             Toast.makeText(SignUpActivity.this, "The display name has been set", Toast.LENGTH_LONG).show();
                         }
                     }
